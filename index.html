@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HouseDesign – Build Your Dream Home with AI Design</title>
+<meta name="description" content="AI House Design Tool: upload a photo of your house or room, choose a style, and visualize your dream home in seconds." />
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<!-- ============ Header ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-5h4v5"/>
+        </svg>
+      </span>
+      <span class="brand-name">HouseDesign</span>
+    </a>
+    <div class="header-actions">
+      <div class="credits-pill" title="Credits">
+        <span class="credits-label">Credits:</span>
+        <span class="coin" aria-hidden="true"></span>
+        <span id="credits-value">&infin;</span>
+      </div>
+      <button id="history-btn" class="icon-btn" title="Design History" aria-label="Design History">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 3v5h5"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"/><path d="M12 7v5l4 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ History drawer ============ -->
+<div id="history-drawer" class="history-drawer" hidden>
+  <div class="history-head">
+    <h3>Design History</h3>
+    <button id="history-close" class="icon-btn" aria-label="Close history">&times;</button>
+  </div>
+  <div id="history-list" class="history-list">
+    <p class="history-empty">No design history yet — your generated house and room designs will appear here after you start creating. &#10024;</p>
+  </div>
+</div>
+<div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
+
+<main id="top">
+
+<!-- ============ Tool ============ -->
+<section class="tool-section">
+  <div class="container tool-grid">
+
+    <!-- Control panel -->
+    <div class="tool-panel card">
+      <div class="panel-block">
+        <label class="panel-label">Upload photo</label>
+        <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Upload photo">
+          <input type="file" id="file-input" accept="image/*" hidden />
+          <div class="dz-inner" id="dz-placeholder">
+            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <p class="dz-title">Click to upload</p>
+            <p class="dz-hint">Drag &amp; drop or Ctrl + V / &#8984; + V</p>
+          </div>
+          <div class="dz-preview" id="dz-preview" hidden>
+            <img id="dz-preview-img" alt="Uploaded photo preview" />
+            <button id="dz-remove" class="dz-remove" title="Remove photo" aria-label="Remove photo">&times;</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-block">
+        <label class="panel-label">Design type</label>
+        <div class="segmented" role="tablist" aria-label="Design type">
+          <button class="seg-btn active" data-design-type="interior" role="tab" aria-selected="true">Interior</button>
+          <button class="seg-btn" data-design-type="exterior" role="tab" aria-selected="false">Exterior</button>
+        </div>
+      </div>
+
+      <div class="panel-block" id="room-type-block">
+        <label class="panel-label">Room type</label>
+        <div class="chip-row" id="room-type-row"></div>
+      </div>
+
+      <div class="panel-block">
+        <label class="panel-label">Choose style</label>
+        <div class="style-grid" id="style-grid"></div>
+      </div>
+
+      <button id="design-btn" class="btn btn-primary btn-design" disabled>
+        <span>Design Now</span>
+        <span class="btn-divider" aria-hidden="true"></span>
+        <span class="btn-cost"><span class="coin coin-sm" aria-hidden="true"></span> 4</span>
+      </button>
+      <p class="panel-note" id="mode-note">
+        Demo mode – add a Gemini API key for real AI generation.
+        <button id="settings-btn" class="link-btn" type="button">Set API key</button>
+      </p>
+    </div>
+
+    <!-- Result area -->
+    <div class="tool-result card" id="result-area">
+      <div class="result-placeholder" id="result-placeholder">
+        <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>
+        </svg>
+        <p>Upload a photo, pick a style and click <strong>Design Now</strong>.<br>Your new house design will appear here.</p>
+      </div>
+
+      <div class="result-loading" id="result-loading" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <p id="loading-msg">Analyzing your photo…</p>
+      </div>
+
+      <div class="result-view" id="result-view" hidden>
+        <div class="compare" id="result-compare">
+          <img class="compare-before" id="result-before" alt="Before – original photo" />
+          <div class="compare-after-wrap" id="result-after-wrap">
+            <img class="compare-after" id="result-after" alt="After – AI generated design" />
+          </div>
+          <span class="compare-tag tag-left">Before</span>
+          <span class="compare-tag tag-right">After</span>
+          <div class="compare-handle" id="result-handle">
+            <span class="handle-knob">&#8596;</span>
+          </div>
+        </div>
+        <div class="result-actions">
+          <button id="download-btn" class="btn btn-primary">Download design</button>
+          <button id="again-btn" class="btn btn-ghost">Design another</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">AI <span class="accent">House Design</span> Tool: Visualize Your Dream Home in Seconds</h1>
+
+    <div class="compare hero-compare" id="hero-compare">
+      <img class="compare-before" src="assets/img/before.svg" alt="Before – unfinished house" />
+      <div class="compare-after-wrap" id="hero-after-wrap">
+        <img class="compare-after" src="assets/img/after.svg" alt="After – AI redesigned modern house" />
+      </div>
+      <span class="compare-tag tag-left">Before</span>
+      <span class="compare-tag tag-right">After</span>
+      <div class="compare-handle" id="hero-handle">
+        <span class="handle-knob">&#8596;</span>
+      </div>
+    </div>
+
+    <div class="center">
+      <a href="#top" class="btn btn-primary btn-lg scroll-tool">Get Your House Design Now!</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 steps ============ -->
+<section class="section section-tint">
+  <div class="container">
+    <h2 class="section-title">Create Your Dream House Design in 3 Steps</h2>
+    <p class="section-sub">Using HouseDesign is simple. Upload a photo, choose a style, and generate a new house design idea for your home in seconds.</p>
+    <div class="steps-grid">
+      <div class="step-card card">
+        <div class="step-num">1</div>
+        <h3>Choose House Design or Room Design</h3>
+        <p>Select House Design for exterior design or Room Design for interior design. This helps the AI generate the most accurate house design for your space.</p>
+      </div>
+      <div class="step-card card">
+        <div class="step-num">2</div>
+        <h3>Upload a Photo</h3>
+        <p>Upload a clear image of your house exterior or interior room. The AI analyzes the structure and layout to prepare for the new house design.</p>
+      </div>
+      <div class="step-card card">
+        <div class="step-num">3</div>
+        <h3>Choose a Style and Generate</h3>
+        <p>Pick your preferred style and click generate. HouseDesign will instantly create a new house design based on your photo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Features ============ -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">The Smarter Way to Explore House Design Ideas</h2>
+    <p class="section-sub">HouseDesign helps users easily explore new house design ideas with fast and simple AI-powered visualization.</p>
+    <div class="feature-grid">
+      <div class="feature card">
+        <div class="feature-ico">&#9889;</div>
+        <h3>Instant Design Visualization</h3>
+        <p>Upload a photo and instantly generate a new house design idea, making it easier to see real home design possibilities without guessing.</p>
+      </div>
+      <div class="feature card">
+        <div class="feature-ico">&#129302;</div>
+        <h3>AI-Powered Style Transformation</h3>
+        <p>HouseDesign uses AI to analyze structure and layout, creating a realistic AI house design that naturally fits your original image.</p>
+      </div>
+      <div class="feature card">
+        <div class="feature-ico">&#127968;</div>
+        <h3>Exterior and Interior in One Tool</h3>
+        <p>You can redesign both the home facade and indoor spaces, exploring exterior design and interior design ideas in one place.</p>
+      </div>
+      <div class="feature card">
+        <div class="feature-ico">&#127912;</div>
+        <h3>Explore Multiple Design Styles</h3>
+        <p>Try different styles using the same image and easily compare results to find the home design direction that fits your space best.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Use cases ============ -->
+<section class="section section-tint">
+  <div class="container">
+    <h2 class="section-title">Create Your Own House Design with Our Tool</h2>
+    <p class="section-sub">HouseDesign can be used in many practical situations. People often use the platform to explore ideas before making design decisions.</p>
+    <div class="usecase-grid">
+      <div class="usecase card">
+        <h3>Home Renovation Planning</h3>
+        <p>Before repainting a facade or replacing exterior materials, homeowners often want to preview the outcome. Generating a new house design allows you to see possible results before starting construction.</p>
+      </div>
+      <div class="usecase card">
+        <h3>Interior Redesign Inspiration</h3>
+        <p>If you want to update a living room or bedroom, HouseDesign can quickly generate interior design concepts. This helps identify which style feels most comfortable for the space.</p>
+      </div>
+      <div class="usecase card">
+        <h3>Real Estate Presentation</h3>
+        <p>Show buyers a property&rsquo;s full potential with AI generated house design visuals, boosting perceived value and helping homes sell faster.</p>
+      </div>
+      <div class="usecase card">
+        <h3>Personal Creativity</h3>
+        <p>Many users simply enjoy experimenting with new home design ideas. HouseDesign allows people to explore possibilities without needing professional software.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Testimonials ============ -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">What Real HouseDesign Users Are Saying</h2>
+    <p class="section-sub">Many people use HouseDesign to explore new house design ideas before making real changes to their homes. Here are a few experiences shared by real users.</p>
+    <div class="quote-grid">
+      <div class="quote card"><p>&ldquo;I uploaded a photo of my house and tried several house design styles. Seeing the results helped me clearly decide which look fits my home best.&rdquo;</p><div class="quote-who"><span class="avatar" data-i="EC"></span><div><strong>Emily Carter</strong><small>Homeowner</small></div></div></div>
+      <div class="quote card"><p>&ldquo;I use HouseDesign to generate different house design variations for study. It helps me understand how architectural styles change a building&rsquo;s appearance.&rdquo;</p><div class="quote-who"><span class="avatar" data-i="DK"></span><div><strong>Daniel Kim</strong><small>Architecture Student</small></div></div></div>
+      <div class="quote card"><p>&ldquo;I show buyers alternative home design visuals using HouseDesign. It helps them imagine how a property could look after renovation.&rdquo;</p><div class="quote-who"><span class="avatar" data-i="SM"></span><div><strong>Sophia Martinez</strong><small>Real Estate Agent</small></div></div></div>
+      <div class="quote card"><p>&ldquo;I like testing different exterior design styles before starting projects. HouseDesign makes it easy to preview ideas from one photo.&rdquo;</p><div class="quote-who"><span class="avatar" data-i="MJ"></span><div><strong>Marcus Johnson</strong><small>DIY Renovation Enthusiast</small></div></div></div>
+      <div class="quote card"><p>&ldquo;I use the tool to explore quick interior design ideas for rooms. It is helpful when preparing early concepts for clients.&rdquo;</p><div class="quote-who"><span class="avatar" data-i="OB"></span><div><strong>Olivia Bennett</strong><small>Interior Designer</small></div></div></div>
+      <div class="quote card"><p>&ldquo;I test different house design styles before planning renovations. It helps me quickly visualize upgrade possibilities.&rdquo;</p><div class="quote-who"><span class="avatar" data-i="JL"></span><div><strong>Jason Lee</strong><small>Property Developer</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section-tint">
+  <div class="container container-narrow">
+    <h2 class="section-title">House Design FAQs</h2>
+    <p class="section-sub">Quick answers to common questions about using HouseDesign to create house design ideas.</p>
+    <div class="faq" id="faq">
+      <details class="faq-item card"><summary>What is HouseDesign?</summary><p>HouseDesign is an AI-powered platform that generates house design concepts from uploaded images. It can create both exterior design transformations and interior design ideas.</p></details>
+      <details class="faq-item card"><summary>Do I need design experience?</summary><p>No experience is required. The tool is designed so anyone can generate a house design concept by uploading a photo and selecting a style.</p></details>
+      <details class="faq-item card"><summary>What type of photos should I upload?</summary><p>Clear images with good lighting usually produce the best results. For exterior design, use a front view of the house. For interior design, make sure the room is visible and not heavily obstructed.</p></details>
+      <details class="faq-item card"><summary>Can I try multiple styles with the same photo?</summary><p>Yes. Many users generate several house design variations from one image to compare different aesthetics.</p></details>
+      <details class="faq-item card"><summary>Is this suitable for renovation planning?</summary><p>The generated images are conceptual, but they can help visualize potential home design directions before starting a renovation project.</p></details>
+      <details class="faq-item card"><summary>Does the platform support different room types?</summary><p>Yes. When generating interior design results, you can choose from room types such as living room, bedroom, kitchen, bathroom, dining room, and office.</p></details>
+      <details class="faq-item card"><summary>Does it replace a professional architect?</summary><p>HouseDesign is a powerful visualization tool for inspiration and conceptual planning. While it provides stunning house design ideas, we recommend consulting a professional for structural changes.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Bottom CTA ============ -->
+<section class="section cta-section">
+  <div class="container container-narrow center">
+    <h2 class="section-title">Start Creating Your House Design Today</h2>
+    <p class="section-sub">Upload a photo and explore endless house design possibilities with AI. Instantly transform your home with new home design, exterior design, and interior design styles to find the look that truly fits your space.</p>
+    <a href="#top" class="btn btn-primary btn-lg scroll-tool">Create Your House Design Now!</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a class="brand brand-light" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-5h4v5"/>
+          </svg>
+        </span>
+        <span class="brand-name">HouseDesign</span>
+      </a>
+      <p>Design your dream home with HouseDesign. From rooms to outdoor spaces, our AI brings your vision to life in seconds. Fast, creative, and personalized.</p>
+    </div>
+    <div class="footer-meta">
+      <span>Follow us</span>
+      <div class="socials">
+        <a href="#" aria-label="X">&#120143;</a>
+        <a href="#" aria-label="Instagram">&#9635;</a>
+        <a href="#" aria-label="YouTube">&#9658;</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-copy">&copy; 2026 HouseDesign. All rights reserved.</div>
+</footer>
+
+<!-- ============ Settings modal ============ -->
+<div id="settings-modal" class="modal" hidden>
+  <div class="modal-box card">
+    <h3>AI generation settings</h3>
+    <p>Without a key the tool runs in <strong>demo mode</strong> (a stylized preview is rendered locally in your browser). Paste a <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google Gemini API key</a> to generate real AI redesigns. The key is stored only in your browser (localStorage).</p>
+    <input type="password" id="api-key-input" class="text-input" placeholder="Gemini API key (AIza…)" autocomplete="off" />
+    <div class="modal-actions">
+      <button id="settings-save" class="btn btn-primary">Save</button>
+      <button id="settings-clear" class="btn btn-ghost">Remove key</button>
+      <button id="settings-cancel" class="btn btn-ghost">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
