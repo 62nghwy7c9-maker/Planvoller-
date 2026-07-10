@@ -1,43 +1,15 @@
-# HouseDesign – AI House Design Tool (Rebuild)
+# Vorher/Nachher Schieberegler
 
-A rebuild of the AI house design tool from [housedesign.ai](https://housedesign.ai/): upload a photo of your house or room, choose a style, and visualize a redesigned version in seconds — complete with a draggable before/after comparison slider.
+Der Bildvergleichs-Schieberegler wie auf housedesign.ai – eine einzige HTML-Datei, keine Abhängigkeiten.
 
-Built as a fully static site: plain HTML, CSS and vanilla JavaScript. No build step, no dependencies.
+## Eigene Bilder einsetzen
 
-## Run it
+1. Lege deine zwei Bilder neben die `index.html` (z.B. `vorher.jpg` und `nachher.jpg`).
+2. Öffne `index.html` und ersetze die beiden Bildpfade (der Kommentar im Code zeigt die Stelle):
+   - `src="before.svg"` → `src="vorher.jpg"`
+   - `src="after.svg"` → `src="nachher.jpg"`
+3. `index.html` im Browser öffnen – fertig. Ziehen mit Maus oder Finger.
 
-Open `index.html` directly in a browser, or serve the folder:
+Beide Bilder sollten das gleiche Seitenverhältnis haben. Die beiden mitgelieferten SVGs sind nur Demo-Bilder und können gelöscht werden, sobald eigene Bilder eingetragen sind.
 
-```bash
-python3 -m http.server 8000
-# then open http://localhost:8000
-```
-
-## Features
-
-- **Design tool panel** – photo upload via click, drag & drop, or paste (Ctrl/⌘+V)
-- **Design type** – Interior or Exterior
-- **Room types** (interior) – Living Room, Bedroom, Kitchen, Bathroom, Dining Room, Office
-- **Styles** – Interior: Modern, Minimalist, Scandinavian, Industrial, Rustic, Bohemian · Exterior: Modern, Contemporary, Farmhouse, Colonial, Mediterranean, Zen
-- **Before/after compare slider** – on the hero demo and on every generated result
-- **Design history** – recent generations stored in `localStorage`, shown in the history drawer (clock icon in the header)
-- **Download** – save the generated design as a JPEG
-- Full landing page: 3-step guide, features, use cases, testimonials, FAQ, CTA
-
-## Generation modes
-
-| Mode | How it works |
-|------|--------------|
-| **Demo mode** (default) | The redesign preview is rendered locally in your browser with a canvas-based color grade matched to the selected style. No account, no key, no server. |
-| **AI mode** | Click *"Set API key"* under the Design Now button and paste a [Google Gemini API key](https://aistudio.google.com/apikey). Generations then use Gemini image-to-image (`gemini-2.5-flash-image`) with style prompts, preserving the structure and perspective of your photo. The key is stored only in your browser's `localStorage` and sent only to Google's API. |
-
-## Project structure
-
-```
-index.html          – landing page + design tool
-assets/css/style.css – styling (green brand theme)
-assets/js/app.js     – tool logic: upload, styles, generation, history, compare slider
-assets/img/          – hero before/after illustrations, favicon (all original SVG)
-```
-
-All images are original SVG illustrations — no assets are copied from housedesign.ai.
+Zum Einbauen in eine bestehende Seite: den `<style>`-Block, das `<div class="compare">…</div>` und den `<script>`-Block kopieren – mehrere Regler auf einer Seite funktionieren automatisch.
