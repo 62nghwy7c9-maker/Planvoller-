@@ -1,0 +1,115 @@
+/* HouseIntro — Styles. Alle Klassen mit intro- präfixiert, damit das Intro
+   nichts an deiner Seite überschreibt. Liegt als Vollbild-Overlay über allem
+   und blendet sich am Ende selbst aus. */
+.intro-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #e9eef2;
+  color: #2b3a44;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.intro-canvas {
+  position: absolute;
+  inset: 0;
+}
+.intro-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ecken-UI */
+.intro-ui {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px clamp(20px, 4vw, 48px);
+  pointer-events: none;
+}
+.intro-brand {
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.intro-skip {
+  pointer-events: auto;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #2b3a44;
+  cursor: pointer;
+  border: 1px solid rgba(43, 58, 68, 0.25);
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  transition: background 0.2s ease;
+}
+.intro-skip:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+.intro-skip:focus-visible {
+  outline: 2px solid #2b3a44;
+  outline-offset: 2px;
+}
+
+/* Text-Overlays, per Fortschritt ein- und ausgeblendet */
+.intro-caps {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.intro-cap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 0 24px clamp(56px, 14vh, 130px);
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, transform;
+}
+.intro-cap--hero {
+  justify-content: center;
+  padding-bottom: 0;
+}
+.intro-cap__eyebrow {
+  margin: 0 0 14px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: clamp(10px, 1.2vw, 13px);
+  font-weight: 600;
+  opacity: 0.6;
+}
+.intro-cap__title {
+  margin: 0;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 1.02;
+  max-width: 18ch;
+}
+.intro-cap--hero .intro-cap__title {
+  font-size: clamp(3.2rem, 11vw, 9rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.intro-cap__text {
+  margin: 16px 0 0;
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.5;
+  max-width: 44ch;
+  opacity: 0.75;
+}
