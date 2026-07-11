@@ -29,6 +29,7 @@
     initMenu();
     initFootYear();
     initForm();
+    initCompare();
 
     if (!HAS_GSAP || REDUCED) return; // ruhige Vollversion: alles statisch sichtbar
 
@@ -270,6 +271,53 @@
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
 
+  /* ---------- Vorher/Nachher-Regler (Rohbau → Zuhause) ---------- */
+  function initCompare() {
+    document.querySelectorAll("[data-compare]").forEach(function (box) {
+      var pos = 50;
+      var dragging = false;
+
+      function set(p) {
+        pos = Math.max(0, Math.min(100, p));
+        box.style.setProperty("--pos", pos + "%");
+        box.setAttribute("aria-valuenow", String(Math.round(pos)));
+      }
+      function fromEvent(e) {
+        var r = box.getBoundingClientRect();
+        set(((e.clientX - r.left) / r.width) * 100);
+      }
+
+      box.addEventListener("pointerdown", function (e) {
+        dragging = true;
+        box.setPointerCapture(e.pointerId);
+        fromEvent(e);
+      });
+      box.addEventListener("pointermove", function (e) { if (dragging) fromEvent(e); });
+      ["pointerup", "pointercancel"].forEach(function (ev) {
+        box.addEventListener(ev, function () { dragging = false; });
+      });
+      box.addEventListener("keydown", function (e) {
+        var step = { ArrowLeft: -5, ArrowRight: 5 }[e.key];
+        if (step) { set(pos + step); e.preventDefault(); }
+        if (e.key === "Home") { set(0); e.preventDefault(); }
+        if (e.key === "End") { set(100); e.preventDefault(); }
+      });
+
+      /* Intro: Regler fährt kurz aus und rastet auf 50 % ein — zeigt die Interaktivität */
+      if (HAS_GSAP && !REDUCED) {
+        var obj = { p: 66 };
+        gsap.to(obj, {
+          p: 50,
+          duration: 1.1,
+          ease: "expo.out",
+          scrollTrigger: { trigger: box, start: "top 75%", once: true },
+          onStart: function () { if (!dragging) set(obj.p); },
+          onUpdate: function () { if (!dragging) set(obj.p); }
+        });
+      }
+    });
+  }
+
   /* ---------- Magnetische Buttons ---------- */
   function initMagnetic() {
     document.querySelectorAll("[data-magnetic]").forEach(function (el) {
@@ -310,7 +358,7 @@
       var t = e.target;
       if (t.closest(".case, .post")) {
         docEl.classList.add("cursor-view"); docEl.classList.remove("cursor-hover");
-      } else if (t.closest("a, button, input, select, textarea, label")) {
+      } else if (t.closest("a, button, input, select, textarea, label, [data-compare]")) {
         docEl.classList.add("cursor-hover"); docEl.classList.remove("cursor-view");
       } else {
         docEl.classList.remove("cursor-hover", "cursor-view");

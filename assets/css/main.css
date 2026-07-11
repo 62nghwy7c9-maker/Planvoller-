@@ -409,6 +409,61 @@ html.no-gsap .manifest .w { color: inherit; }
 .stat b sup { color: var(--accent); font-size: .55em; font-weight: 500; }
 .stat > span { font-size: var(--fs-small); color: var(--ink-soft); }
 
+/* ---------- 8b. Vorher/Nachher-Regler (Rohbau → Zuhause) ---------- */
+.compare {
+  --pos: 50%;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: clip;
+  background: var(--paper-deep);
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none; -webkit-user-select: none;
+}
+.compare img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  pointer-events: none;
+}
+.compare__after {
+  position: absolute; inset: 0;
+  clip-path: inset(0 0 0 var(--pos));
+}
+.compare__handle {
+  position: absolute; top: 0; bottom: 0; left: var(--pos);
+  width: 2px; margin-left: -1px;
+  background: var(--accent);
+  z-index: 2;
+}
+.compare__knob {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.75rem; height: 2.75rem;
+  display: grid; place-items: center;
+  background: var(--ink); color: var(--paper);
+  font-family: var(--font-display); font-size: 1rem;
+  letter-spacing: .05em;
+}
+.compare__label {
+  position: absolute; bottom: var(--sp-2); z-index: 1;
+  padding: .4em .8em;
+  font-family: var(--font-display);
+  font-size: var(--fs-tiny); font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  background: color-mix(in srgb, var(--ink) 72%, transparent);
+  color: var(--paper);
+  pointer-events: none;
+}
+.compare__label--before { left: var(--sp-2); }
+.compare__label--after  { right: var(--sp-2); }
+.compare:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.compare-hint {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-tiny); letter-spacing: .08em;
+  color: var(--ink-soft);
+}
+@media (max-width: 699px) { .compare { aspect-ratio: 4 / 5; } }
+
 /* ---------- 9. Referenz-Teaser & Case-Grid ---------- */
 .case-teaser { display: grid; gap: var(--sp-6); }
 .case {
