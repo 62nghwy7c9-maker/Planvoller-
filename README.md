@@ -35,10 +35,27 @@ python3 -m http.server 8000
 - Mobil: Hero als Standbild, 15 Schritte als Liste.
 - Tastatur vollständig bedienbar, Fokusringe, Landmarks, Skip-Link.
 
+## Bilder austauschen (Namenskonvention)
+
+Alle Bild-Slots liegen unter `assets/img/` — **echte Fotos einfach unter demselben
+Dateinamen ablegen, kein Markup-Edit nötig:**
+
+| Datei | Verwendung | Empfehlung |
+| --- | --- | --- |
+| `hero-poster.jpg` | Hero-Standbild (mobil / Fallback) | quer, ≥1600 px |
+| `og-image.jpg` | Social-Media-Vorschau | exakt 1200×630 |
+| `ref-<slug>-cover.jpg` | Referenz-Grid, Teaser, Detail-Hero | 16:10, ≥1280 px |
+| `ref-<slug>-01.jpg` … `-03.jpg` | Galerie der Detailseite | 4:3, ≥1200 px |
+| `step-01.jpg` … `step-15.jpg` | 15-Schritte-Scrollytelling | 16:9, ≥960 px |
+
+Slugs: `stadtvilla-moers`, `kubus-hallig`, `landhaus-steves`, `stadthaus-barth`,
+`stadtvilla-reichert`. `before.jpg`/`after.jpg` (Repo-Root) speisen den
+Vorher/Nachher-Regler — ideal: zwei Aufnahmen desselben Projekts aus gleicher Perspektive.
+
 ## Offene TODOs (im Markup mit `TODO` markiert)
 
-1. **Echte Adressen + Telefonnummern** der drei Standorte (aktuell Platzhalter).
-2. **Projektfotografie** ersetzen (`before.jpg`/`after.jpg` sind Platzhalter; ideal WebP/AVIF + `srcset`).
-3. **Formular-Backend** anbinden (Versand an info@planvoller.de).
-4. **Impressum/Datenschutz** rechtlich vervollständigen; ggf. Fonts/Libs self-hosten (DSGVO).
-5. Blog-Beitragsseiten anlegen.
+1. **Projektfotografie** hochladen (siehe Namenskonvention oben) — aktuell Platzhalter.
+2. **Formular-Backend**: `data-endpoint="…"` am `<form>` in `kontakt.html` setzen
+   (POST, FormData); ohne Endpoint öffnet sich als Fallback das E-Mail-Programm.
+3. **Impressum**: Registergericht + HRB-Nummer ergänzen; Rechtstexte prüfen lassen.
+4. Blog-Beitragsseiten anlegen (Übersicht steht).

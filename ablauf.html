@@ -9,10 +9,10 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="In 15 Schritten zum Traumhaus — der Planvoller Ablauf">
   <meta property="og:description" content="Vom Erstgespräch bis zur Schlüsselübergabe: 15 klar definierte Schritte.">
-  <meta property="og:image" content="https://www.planvoller.de/after.jpg">
+  <meta property="og:image" content="https://www.planvoller.de/assets/img/og-image.jpg">
   <meta property="og:locale" content="de_DE">
   <meta name="theme-color" content="#f3f1ec">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317181a'/%3E%3Ctext x='30' y='45' font-family='Arial' font-size='38' font-weight='700' fill='%23f3f1ec' text-anchor='middle'%3EP%3C/text%3E%3Crect x='46' y='36' width='9' height='9' fill='%23c2571f'/%3E%3C/svg%3E">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -32,21 +32,21 @@
     "@type": "HowTo",
     "name": "In 15 Schritten zum Traumhaus",
     "step": [
-      { "@type": "HowToStep", "position": 1,  "name": "Erstgespräch" },
-      { "@type": "HowToStep", "position": 2,  "name": "Grundstücksprüfung" },
-      { "@type": "HowToStep", "position": 3,  "name": "Raumprogramm" },
-      { "@type": "HowToStep", "position": 4,  "name": "Entwurfsplanung" },
-      { "@type": "HowToStep", "position": 5,  "name": "Kostenklarheit" },
-      { "@type": "HowToStep", "position": 6,  "name": "Bauvertrag" },
-      { "@type": "HowToStep", "position": 7,  "name": "Bauantrag" },
-      { "@type": "HowToStep", "position": 8,  "name": "Werkplanung" },
-      { "@type": "HowToStep", "position": 9,  "name": "Bemusterung" },
-      { "@type": "HowToStep", "position": 10, "name": "Terminplan" },
-      { "@type": "HowToStep", "position": 11, "name": "Rohbau" },
-      { "@type": "HowToStep", "position": 12, "name": "Gebäudehülle" },
-      { "@type": "HowToStep", "position": 13, "name": "Ausbau und Technik" },
-      { "@type": "HowToStep", "position": 14, "name": "Qualitätsprüfung" },
-      { "@type": "HowToStep", "position": 15, "name": "Schlüsselübergabe" }
+      { "@type": "HowToStep", "position": 1, "name": "Bauantrags-Unterlagen" },
+      { "@type": "HowToStep", "position": 2, "name": "Baugenehmigung" },
+      { "@type": "HowToStep", "position": 3, "name": "Baubeginn" },
+      { "@type": "HowToStep", "position": 4, "name": "Fertigstellung der Bodenplatte" },
+      { "@type": "HowToStep", "position": 5, "name": "Tragendes EG-Mauerwerk" },
+      { "@type": "HowToStep", "position": 6, "name": "Decke über dem Erdgeschoss" },
+      { "@type": "HowToStep", "position": 7, "name": "Tragendes OG-Mauerwerk" },
+      { "@type": "HowToStep", "position": 8, "name": "Dachstuhl — Richtfest" },
+      { "@type": "HowToStep", "position": 9, "name": "Dachdeckerarbeiten" },
+      { "@type": "HowToStep", "position": 10, "name": "Fenster & Eingangstüre" },
+      { "@type": "HowToStep", "position": 11, "name": "Elektro-Rohinstallation & Innenputz" },
+      { "@type": "HowToStep", "position": 12, "name": "Sanitär-Rohinstallation" },
+      { "@type": "HowToStep", "position": 13, "name": "Estrich & Außenputz" },
+      { "@type": "HowToStep", "position": 14, "name": "Endmontage der Haustechnik" },
+      { "@type": "HowToStep", "position": 15, "name": "Fertigstellung & Hausübergabe" }
     ]
   }
   </script>
@@ -56,7 +56,7 @@
 
   <header class="site-head">
     <div class="shell site-head__bar">
-      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite">planvoller<sup>■</sup></a>
+      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite"><img src="assets/img/planvoller-logo.svg" alt="Planvoller — Wir bauen mit Herz und Verstand" width="407" height="74"></a>
       <nav class="site-nav" aria-label="Hauptnavigation">
         <a href="planvoller.html">Planvoller</a>
         <a href="ablauf.html" aria-current="page">Ablauf</a>
@@ -64,6 +64,9 @@
         <a href="blog.html">Blog</a>
         <a class="btn" href="kontakt.html" data-magnetic><span>Bauanfrage</span></a>
       </nav>
+      <button class="search-toggle" type="button" aria-expanded="false" aria-label="Suche öffnen (Strg+K)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.3-4.3"/></svg>
+      </button>
       <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen">
         <span></span><span></span>
       </button>
@@ -91,161 +94,139 @@
             <li aria-current="page">Ablauf</li>
           </ol>
         </nav>
-        <h1 data-split>Fünfzehn Schritte. Eine Reihenfolge. Kein Zufall.</h1>
+        <h1 data-split>Fünfzehn Meilensteine. Eine Reihenfolge. Kein Zufall.</h1>
         <p class="lead" data-reveal>Bauen wird dann sorgenfrei, wenn jeder Schritt seinen Platz hat.
-          Unser Ablauf ist kein Marketing-Diagramm, sondern gelebte Praxis auf jeder Baustelle —
-          vom ersten Gespräch bis zu dem Tag, an dem Sie aufschließen.</p>
+          Vom Bauantrag bis zur Schlüsselübergabe gliedert sich Ihr Bauvorhaben bei uns in
+          15 klar definierte Meilensteine — mit Qualitätskontrolle in jedem Bauabschnitt.</p>
       </header>
+
+      <section class="section--tight" aria-labelledby="vorab-h">
+        <p class="kicker" data-reveal>Vor dem ersten Spatenstich</p>
+        <h2 id="vorab-h" class="mt-2" style="font-size:var(--fs-h3);max-width:28em;" data-reveal>
+          Erstgespräch, Grundstücksprüfung, Entwurf, Festpreis, Bauvertrag — die Planung führen
+          wir gemeinsam und gründlich, bevor Schritt 01 beginnt. Dann übernimmt der Plan.</h2>
+        <hr class="hairline mt-4" data-draw>
+      </section>
 
       <ol class="process" role="list">
         <li class="process__row" id="schritt-1">
           <span class="process__no num-mono" aria-hidden="true">01</span>
           <div class="process__body" data-reveal>
-            <h2>Erstgespräch</h2>
-            <p>Wir beginnen nicht mit einem Haus, sondern mit Ihnen: Wie leben Sie, was brauchen Sie,
-               was darf es kosten? Das Erstgespräch ist unverbindlich — aber gründlich. Sie gehen mit
-               einer ehrlichen Einschätzung nach Hause, nicht mit einem Prospekt.</p>
-            <span class="process__tag">Phase — Verstehen</span>
+            <h2>Bauantrags-Unterlagen</h2>
+            <p>Bebauungsplan, Entwurfspläne, Berechnungen, Nachweise: Wir stellen alle Unterlagen für Ihren Bauantrag zusammen und reichen vollständig ein — weil das der schnellste Weg zur Genehmigung ist.</p>
+            <span class="process__tag">Phase — Genehmigung</span>
           </div>
         </li>
         <li class="process__row" id="schritt-2">
           <span class="process__no num-mono" aria-hidden="true">02</span>
           <div class="process__body" data-reveal>
-            <h2>Grundstücksprüfung</h2>
-            <p>Bebauungsplan, Baulasten, Bodenverhältnisse, Erschließung, Ausrichtung: Wir prüfen, was
-               Ihr Grundstück kann und was es verlangt — bevor die erste Linie gezeichnet wird. Wer hier
-               sorgfältig ist, spart später die teuren Überraschungen.</p>
-            <span class="process__tag">Phase — Verstehen</span>
+            <h2>Baugenehmigung</h2>
+            <p>Ein wichtiger Meilenstein ist erreicht: Die Baugenehmigung bzw. Freistellungsgenehmigung wird erteilt. Ab jetzt hat Ihr Traumhaus eine Rechtsgrundlage — und einen Terminplan.</p>
+            <span class="process__tag">Phase — Genehmigung</span>
           </div>
         </li>
         <li class="process__row" id="schritt-3">
           <span class="process__no num-mono" aria-hidden="true">03</span>
           <div class="process__body" data-reveal>
-            <h2>Raumprogramm</h2>
-            <p>Vor dem Grundriss steht der Alltag: Wege am Morgen, Licht am Abend, Stauraum, Arbeitsplatz,
-               Gäste. Wir übersetzen Ihr Leben in ein Raumprogramm — die belastbare Grundlage für jeden
-               guten Entwurf.</p>
-            <span class="process__tag">Phase — Verstehen</span>
+            <h2>Baubeginn</h2>
+            <p>Baustelleneinrichtung, Erdarbeiten, erste Maschinen: Die Bauarbeiten beginnen, und Ihr Bauvorhaben wird nun wirklich sichtbar. Ihr Bauleiter hält Sie ab jetzt regelmäßig auf dem Laufenden.</p>
+            <span class="process__tag">Phase — Rohbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-4">
           <span class="process__no num-mono" aria-hidden="true">04</span>
           <div class="process__body" data-reveal>
-            <h2>Entwurfsplanung</h2>
-            <p>Kein Katalogtyp, sondern Ihre Antwort auf Ihr Grundstück: Proportion, Baukörper,
-               Fassade, Grundrisse. Wir entwerfen, besprechen, schärfen nach — bis der Entwurf sitzt
-               und Sie ihn nicht mehr hergeben wollen.</p>
-            <span class="process__tag">Phase — Planen</span>
+            <h2>Fertigstellung der Bodenplatte</h2>
+            <p>Sauber geschalt, bewehrt und betoniert: Die Bodenplatte ist fertig — die Grundlage, auf der Ihr Traumhaus in den kommenden Monaten wächst.</p>
+            <span class="process__tag">Phase — Rohbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-5">
           <span class="process__no num-mono" aria-hidden="true">05</span>
           <div class="process__body" data-reveal>
-            <h2>Kostenklarheit</h2>
-            <p>Ein Festpreis, der diesen Namen verdient: vollständig kalkuliert, nachvollziehbar
-               aufgeschlüsselt, abgestimmt auf Ihre Finanzierung. Sie wissen vor der Unterschrift,
-               was Ihr Haus kostet — nicht danach.</p>
-            <span class="process__tag">Phase — Planen</span>
+            <h2>Tragendes EG-Mauerwerk</h2>
+            <p>Ihr Haus hat die ersten Wände erhalten: Das tragende Mauerwerk im Erdgeschoss steht — maßhaltig, lotrecht, kontrolliert.</p>
+            <span class="process__tag">Phase — Rohbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-6">
           <span class="process__no num-mono" aria-hidden="true">06</span>
           <div class="process__body" data-reveal>
-            <h2>Bauvertrag</h2>
-            <p>Die Leistungsbeschreibung ist das Fundament des Vertrauens: Was drinsteht, wird gebaut —
-               und was gebaut wird, steht drin. Vollständig, verständlich, verbindlich. Nehmen Sie sich
-               Zeit dafür; wir nehmen sie uns auch.</p>
-            <span class="process__tag">Phase — Planen</span>
+            <h2>Decke über dem Erdgeschoss</h2>
+            <p>Das Mauerwerk im Erdgeschoss erhält die Decke. Wie in jedem Bauabschnitt gilt: erst die Qualitätskontrolle, dann der nächste Schritt.</p>
+            <span class="process__tag">Phase — Rohbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-7">
           <span class="process__no num-mono" aria-hidden="true">07</span>
           <div class="process__body" data-reveal>
-            <h2>Bauantrag</h2>
-            <p>Formulare, Nachweise, Abstimmungen mit dem Bauamt: Wir führen das Genehmigungsverfahren
-               für Sie — mit vollständigen Unterlagen beim ersten Einreichen, weil das der schnellste
-               Weg zur Genehmigung ist.</p>
-            <span class="process__tag">Phase — Planen</span>
+            <h2>Tragendes OG-Mauerwerk</h2>
+            <p>Es geht zur nächsten Ebene: Das tragende Mauerwerk im Dach- bzw. Obergeschoss entsteht — mit Qualitätskontrolle in allen Bauabschnitten.</p>
+            <span class="process__tag">Phase — Rohbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-8">
           <span class="process__no num-mono" aria-hidden="true">08</span>
           <div class="process__body" data-reveal>
-            <h2>Werkplanung</h2>
-            <p>Aus dem Entwurf wird ein millimetergenaues Regelwerk: Werkpläne, Details, Statik,
-               Haustechnik-Planung. Jedes Gewerk weiß, was es wann und wie zu tun hat — Qualität
-               entsteht auf dem Papier, bevor sie auf der Baustelle sichtbar wird.</p>
-            <span class="process__tag">Phase — Planen</span>
+            <h2>Dachstuhl — Richtfest</h2>
+            <p>Der Dachstuhl bzw. die OG-Decke ist fertiggestellt — Richtfest! Ein großer Meilenstein und ein Grund zur Freude, den wir gern mit Ihnen feiern.</p>
+            <span class="process__tag">Phase — Rohbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-9">
           <span class="process__no num-mono" aria-hidden="true">09</span>
           <div class="process__body" data-reveal>
-            <h2>Bemusterung</h2>
-            <p>Klinker oder Putz, Eiche oder Fliese, Schalter, Armaturen, Türen: Sie entscheiden mit
-               allen Mustern in der Hand — geführt, nicht gehetzt. Am Ende steht Ihr Haus bis ins
-               Detail fest, schriftlich dokumentiert.</p>
-            <span class="process__tag">Phase — Entscheiden</span>
+            <h2>Dachdeckerarbeiten</h2>
+            <p>Die Dachdeckerarbeiten sind abgeschlossen: Es wird trocken auf der Baustelle — der Rohbau ist geschützt, der Ausbau kann beginnen.</p>
+            <span class="process__tag">Phase — Rohbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-10">
           <span class="process__no num-mono" aria-hidden="true">10</span>
           <div class="process__body" data-reveal>
-            <h2>Terminplan</h2>
-            <p>Jedes Gewerk hat sein Zeitfenster, jede Abhängigkeit ist geplant. Termingerechte
-               Realisation ist bei Planvoller keine Hoffnung, sondern das Ergebnis von Logistik —
-               Sie kennen den Einzugstermin, bevor der Bagger kommt.</p>
-            <span class="process__tag">Phase — Entscheiden</span>
+            <h2>Fenster & Eingangstüre</h2>
+            <p>Fenster und Eingangstüre werden montiert: Das Haus schließt sich, die Gebäudehülle wird dicht — ein spürbarer Schritt Richtung Zuhause.</p>
+            <span class="process__tag">Phase — Ausbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-11">
           <span class="process__no num-mono" aria-hidden="true">11</span>
           <div class="process__body" data-reveal>
-            <h2>Rohbau</h2>
-            <p>Bodenplatte, Mauerwerk, Decken, Treppen: Ihr Haus wächst aus dem Grund. Unsere
-               Bauleitung ist regelmäßig vor Ort, prüft jede Phase und hält Sie mit Fotos und
-               Baustellenberichten auf dem Laufenden.</p>
-            <span class="process__tag">Phase — Bauen</span>
+            <h2>Elektro-Rohinstallation & Innenputz</h2>
+            <p>„Es werde Licht“: Die Elektrorohinstallation wird verlegt, danach folgen die Innenputzarbeiten. Aus Rohbauwänden werden Räume.</p>
+            <span class="process__tag">Phase — Ausbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-12">
           <span class="process__no num-mono" aria-hidden="true">12</span>
           <div class="process__body" data-reveal>
-            <h2>Gebäudehülle</h2>
-            <p>Dachstuhl, Eindeckung, Fenster, Fassade: Das Haus schließt sich. Dichtheit, Dämmung
-               und saubere Anschlüsse entscheiden hier über Jahrzehnte Wohnqualität — entsprechend
-               genau wird gefügt und geprüft.</p>
-            <span class="process__tag">Phase — Bauen</span>
+            <h2>Sanitär-Rohinstallation</h2>
+            <p>Die Sanitärrohinstallation entsteht: alle Leitungen für Bad, WC und Küche — exakt nach Werkplanung, bereit für die Endmontage.</p>
+            <span class="process__tag">Phase — Ausbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-13">
           <span class="process__no num-mono" aria-hidden="true">13</span>
           <div class="process__body" data-reveal>
-            <h2>Ausbau &amp; Technik</h2>
-            <p>Elektro, Heizung, Lüftung, Sanitär, Estrich, Trockenbau, Maler: Im Innenausbau greifen
-               die Gewerke ineinander wie Zahnräder. Unsere Taktung verhindert Leerlauf — und
-               Pfusch aus Zeitdruck.</p>
-            <span class="process__tag">Phase — Bauen</span>
+            <h2>Estrich & Außenputz</h2>
+            <p>Der Estrich wird verlegt, außen wird verputzt: Innen entstehen die fertigen Bodenflächen, außen bekommt Ihr Haus sein Gesicht.</p>
+            <span class="process__tag">Phase — Ausbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-14">
           <span class="process__no num-mono" aria-hidden="true">14</span>
           <div class="process__body" data-reveal>
-            <h2>Qualitätsprüfung</h2>
-            <p>Begehungen mit Protokoll, Messungen, Funktionsprüfungen — auf Wunsch mit unabhängigem
-               Sachverständigen. Erst wenn das Haus unseren Maßstab erfüllt, gilt es als fertig.
-               Unseren, nicht irgendeinen.</p>
-            <span class="process__tag">Phase — Bauen</span>
+            <h2>Endmontage der Haustechnik</h2>
+            <p>Warm, hell und sauber: Die Endmontage der Elektro-, Sanitär- und Heizungsinstallation macht aus der Baustelle ein funktionierendes Haus.</p>
+            <span class="process__tag">Phase — Ausbau</span>
           </div>
         </li>
         <li class="process__row" id="schritt-15">
           <span class="process__no num-mono" aria-hidden="true">15</span>
           <div class="process__body" data-reveal>
-            <h2>Schlüsselübergabe</h2>
-            <p>Ihr Haus, Ihr Schlüssel, Ihr Tag. Wir übergeben ein dokumentiertes, eingewiesenes,
-               fertiges Zuhause — und bleiben danach erreichbar. Gewährleistung ist bei uns eine
-               Beziehung, kein Aktenzeichen.</p>
-            <span class="process__tag">Phase — Ankommen</span>
+            <h2>Fertigstellung & Hausübergabe</h2>
+            <p>Ihr Haus ist fertiggestellt: Wir übergeben ein dokumentiertes, eingewiesenes Zuhause — und bleiben auch danach erreichbar. Herzlich willkommen.</p>
+            <span class="process__tag">Phase — Übergabe</span>
           </div>
         </li>
       </ol>
@@ -265,7 +246,13 @@
 
   <footer class="site-foot">
     <div class="shell">
-      <p class="foot-word" aria-hidden="true">planvoller</p>
+      <div class="foot-milestones">
+        <div class="foot-milestones__bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="foot-milestones__meta">
+          <span>15 Schritte — Ihrer beginnt mit einem Gespräch</span>
+          <a href="kontakt.html">Sprechen wir →</a>
+        </div>
+      </div>
       <div class="foot-grid">
         <div>
           <h4>Planvoller GmbH</h4>
@@ -309,5 +296,6 @@
   <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
   <script defer src="assets/vendor/lenis.min.js"></script>
   <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/search.js"></script>
 </body>
 </html>

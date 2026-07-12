@@ -9,10 +9,10 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Planvoller GmbH — Wir bauen mit Herz und Verstand">
   <meta property="og:description" content="In 15 klar definierten Schritten zum Traumhaus. Wohnhausbau in Würselen, Kerpen und Bensberg.">
-  <meta property="og:image" content="https://www.planvoller.de/after.jpg">
+  <meta property="og:image" content="https://www.planvoller.de/assets/img/og-image.jpg">
   <meta property="og:locale" content="de_DE">
   <meta name="theme-color" content="#f3f1ec">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317181a'/%3E%3Ctext x='30' y='45' font-family='Arial' font-size='38' font-weight='700' fill='%23f3f1ec' text-anchor='middle'%3EP%3C/text%3E%3Crect x='46' y='36' width='9' height='9' fill='%23c2571f'/%3E%3C/svg%3E">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -24,15 +24,17 @@
     "slogan": "Wir bauen mit Herz und Verstand.",
     "url": "https://www.planvoller.de/",
     "email": "info@planvoller.de",
-    "image": "https://www.planvoller.de/after.jpg",
+    "image": "https://www.planvoller.de/assets/img/og-image.jpg",
     "areaServed": "Rheinland",
+    "founder": { "@type": "Person", "name": "Harald Vonhoegen" },
+    "vatID": "DE316989509",
     "department": [
-      { "@type": "HomeAndConstructionBusiness", "name": "Planvoller GmbH Würselen",
-        "address": { "@type": "PostalAddress", "addressLocality": "Würselen", "postalCode": "52146", "addressCountry": "DE" } },
-      { "@type": "HomeAndConstructionBusiness", "name": "Planvoller GmbH Kerpen",
-        "address": { "@type": "PostalAddress", "addressLocality": "Kerpen", "postalCode": "50171", "addressCountry": "DE" } },
-      { "@type": "HomeAndConstructionBusiness", "name": "Planvoller GmbH Bensberg",
-        "address": { "@type": "PostalAddress", "addressLocality": "Bergisch Gladbach", "postalCode": "51429", "addressCountry": "DE" } }
+      { "@type": "HomeAndConstructionBusiness", "name": "Planvoller GmbH Würselen", "telephone": "+49 2405 6079832",
+        "address": { "@type": "PostalAddress", "streetAddress": "Morlaixplatz 15", "addressLocality": "Würselen", "postalCode": "52146", "addressCountry": "DE" } },
+      { "@type": "HomeAndConstructionBusiness", "name": "Planvoller GmbH Kerpen", "telephone": "+49 2273 9918151",
+        "address": { "@type": "PostalAddress", "streetAddress": "Ottostraße 4a", "addressLocality": "Kerpen", "postalCode": "50170", "addressCountry": "DE" } },
+      { "@type": "HomeAndConstructionBusiness", "name": "Planvoller GmbH Bensberg", "telephone": "+49 177 4210010",
+        "address": { "@type": "PostalAddress", "streetAddress": "Industrieweg 13", "addressLocality": "Bergisch Gladbach", "postalCode": "51429", "addressCountry": "DE" } }
     ]
   }
   </script>
@@ -42,7 +44,7 @@
 
   <header class="site-head">
     <div class="shell site-head__bar">
-      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite">planvoller<sup>■</sup></a>
+      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite"><img src="assets/img/planvoller-logo.svg" alt="Planvoller — Wir bauen mit Herz und Verstand" width="407" height="74"></a>
       <nav class="site-nav" aria-label="Hauptnavigation">
         <a href="planvoller.html">Planvoller</a>
         <a href="ablauf.html">Ablauf</a>
@@ -50,6 +52,9 @@
         <a href="blog.html">Blog</a>
         <a class="btn" href="kontakt.html" data-magnetic><span>Bauanfrage</span></a>
       </nav>
+      <button class="search-toggle" type="button" aria-expanded="false" aria-label="Suche öffnen (Strg+K)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.3-4.3"/></svg>
+      </button>
       <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen">
         <span></span><span></span>
       </button>
@@ -74,8 +79,8 @@
     <section class="hero" aria-label="Intro">
       <div class="hero__stage">
         <div class="hero__poster">
-          <!-- Platzhalter aus Bestand — TODO: echtes Projektfoto (WebP/AVIF) ersetzen -->
-          <img src="after.jpg" width="1600" height="1600" fetchpriority="high"
+          <!-- Platzhalter — TODO: echtes Signature-Projektfoto als assets/img/hero-poster.jpg ablegen -->
+          <img src="assets/img/hero-poster.jpg" width="1600" height="1600" fetchpriority="high"
                alt="Modernes Einfamilienhaus der Planvoller GmbH in der Abenddämmerung, warm beleuchtete Fensterfronten">
         </div>
         <div class="hero__canvas" id="hero-canvas" aria-hidden="true"></div>
@@ -92,6 +97,11 @@
             </div>
           </div>
           <p class="hero__scrollhint" aria-hidden="true">Scrollen — das Haus fügt sich</p>
+          <div class="hero__final" aria-hidden="true">
+            <b>15/15</b>
+            <i></i>
+            <span>Schritte bis zum Schlüssel</span>
+          </div>
         </div>
       </div>
     </section>
@@ -157,11 +167,11 @@
           <h2 id="ref-h" data-split>Gebaut. Bezogen. Bewohnt.</h2>
         </div>
         <div class="case-teaser">
-          <a class="case" href="referenz-stadtvilla-moers.html" data-reveal>
-            <div class="case__media">
-              <!-- Platzhalter — TODO: Projektfoto Stadtvilla Mörs ersetzen -->
-              <img src="after.jpg" width="1600" height="1600" loading="lazy" decoding="async"
-                   alt="Stadtvilla Mörs — moderne Putzfassade mit großen Fensterflächen am Abend">
+          <a class="case" href="referenz-stadtvilla-moers.html" data-reveal data-cursor-label="01">
+            <div class="case__media" data-media-reveal data-vt="ref-stadtvilla-moers">
+              <!-- Platzhalter — TODO: assets/img/ref-stadtvilla-moers-cover.jpg ersetzen -->
+              <img src="assets/img/ref-stadtvilla-moers-cover.jpg" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="Stadtvilla Mörs — Stadtvilla, 2 Vollgeschosse">
             </div>
             <div class="case__meta">
               <span class="case__index num-mono">01 — 2020</span>
@@ -169,16 +179,28 @@
               <p>Klassische Proportion, zeitgemäß gebaut: ein Familienhaus mit klarer Kante und warmem Kern.</p>
             </div>
           </a>
-          <a class="case" href="referenz-kubus-hallig.html" data-reveal>
-            <div class="case__media">
-              <!-- Platzhalter — TODO: Projektfoto Kubus Hallig ersetzen -->
-              <img src="before.jpg" width="1600" height="1600" loading="lazy" decoding="async"
-                   alt="Kubus Hallig — kubischer Baukörper im Rohbau mit präzisen Betonkanten">
+          <a class="case" href="referenz-kubus-hallig.html" data-reveal data-cursor-label="02">
+            <div class="case__media" data-media-reveal data-vt="ref-kubus-hallig">
+              <!-- Platzhalter — TODO: assets/img/ref-kubus-hallig-cover.jpg ersetzen -->
+              <img src="assets/img/ref-kubus-hallig-cover.jpg" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="Kubus Hallig — Kubushaus, 2 Baukörper">
             </div>
             <div class="case__meta">
               <span class="case__index num-mono">02 — 2020</span>
               <h3>Kubus Hallig</h3>
               <p>Zwei Volumen, eine Fuge: kompromisslos kubische Architektur, präzise gefügt.</p>
+            </div>
+          </a>
+          <a class="case" href="referenz-landhaus-steves.html" data-reveal data-cursor-label="03">
+            <div class="case__media" data-media-reveal data-vt="ref-landhaus-steves">
+              <!-- Platzhalter — TODO: assets/img/ref-landhaus-steves-cover.jpg ersetzen -->
+              <img src="assets/img/ref-landhaus-steves-cover.jpg" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="Landhaus Steves — Landhaus, 1,5 Geschosse">
+            </div>
+            <div class="case__meta">
+              <span class="case__index num-mono">03 — 2018</span>
+              <h3>Landhaus Steves</h3>
+              <p>Ländliche Ruhe, präzise gebaut: ein Zuhause mit Satteldach-Klassik und modernem Kern.</p>
             </div>
           </a>
         </div>
@@ -197,24 +219,174 @@
           <div class="steps__counter" aria-hidden="true">
             <span data-step-current>01</span><span class="steps__total">/ 15</span>
           </div>
-          <div class="steps__progress" aria-hidden="true"><span data-step-bar></span></div>
+          <div class="steps__ticks" aria-hidden="true" data-step-ticks><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <ol class="steps__list" role="list">
-          <li class="step"><span class="step__no num-mono">Schritt 01</span><h3>Erstgespräch</h3><p>Zuhören zuerst: Ihre Ziele, Ihre Lebenssituation, Ihr Budgetrahmen. Unverbindlich, aber gründlich.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 02</span><h3>Grundstücksprüfung</h3><p>Baurecht, Lage, Boden, Erschließung — wir klären, was Ihr Grundstück kann, bevor geplant wird.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 03</span><h3>Raumprogramm</h3><p>Wie Sie wohnen werden, in Räumen gedacht: Bedarf, Wege, Licht — die Grundlage jedes Entwurfs.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 04</span><h3>Entwurfsplanung</h3><p>Architektur, die zu Grundstück und Leben passt — kein Katalogtyp, sondern Ihre Antwort.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 05</span><h3>Kostenklarheit</h3><p>Festpreis statt Schätzung: transparente Kalkulation, abgestimmt auf Ihre Finanzierung.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 06</span><h3>Bauvertrag</h3><p>Eine Leistungsbeschreibung, die ihren Namen verdient — vollständig, verständlich, verbindlich.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 07</span><h3>Bauantrag</h3><p>Wir führen das Verfahren mit den Behörden — Sie unterschreiben, wir kümmern uns.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 08</span><h3>Werkplanung</h3><p>Vom Entwurf zum millimetergenauen Plan: Details, Anschlüsse, Statik, Haustechnik.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 09</span><h3>Bemusterung</h3><p>Materialien, Oberflächen, Ausstattung — Sie entscheiden mit allen Mustern in der Hand.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 10</span><h3>Terminplan</h3><p>Jedes Gewerk hat sein Fenster. Termingerechte Realisation ist bei uns Planung, kein Versprechen.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 11</span><h3>Rohbau</h3><p>Das Haus wächst aus dem Grund: Bodenplatte, Wände, Decken — kontrolliert in jeder Phase.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 12</span><h3>Gebäudehülle</h3><p>Dach, Fenster, Fassade: dicht, gedämmt, präzise gefügt — das Haus schließt sich.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 13</span><h3>Ausbau &amp; Technik</h3><p>Elektro, Heizung, Sanitär, Innenausbau — die Gewerke greifen ineinander, ohne Leerlauf.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 14</span><h3>Qualitätsprüfung</h3><p>Begehungen mit Protokoll, unabhängige Kontrolle — erst wenn es unseren Maßstab erfüllt, ist es fertig.</p></li>
-          <li class="step"><span class="step__no num-mono">Schritt 15</span><h3>Schlüsselübergabe</h3><p>Ihr Haus, Ihr Schlüssel, Ihr Tag. Und danach: Wir bleiben erreichbar.</p></li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-01.jpg -->
+              <img src="assets/img/step-01.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 01 — Genehmigung</span>
+              <h3>Bauantrags-Unterlagen</h3>
+              <p>Gemeinsam erstellen wir alle nötigen Unterlagen für Ihren Bauantrag — vollständig beim ersten Einreichen.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-02.jpg -->
+              <img src="assets/img/step-02.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 02 — Genehmigung</span>
+              <h3>Baugenehmigung</h3>
+              <p>Ein wichtiger Meilenstein: Die Bau- bzw. Freistellungsgenehmigung wird erteilt.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-03.jpg -->
+              <img src="assets/img/step-03.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 03 — Rohbau</span>
+              <h3>Baubeginn</h3>
+              <p>Die Bauarbeiten beginnen — Ihr Vorhaben wird jetzt wirklich sichtbar.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-04.jpg -->
+              <img src="assets/img/step-04.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 04 — Rohbau</span>
+              <h3>Fertigstellung der Bodenplatte</h3>
+              <p>Die Grundlage für Ihr Traumhaus ist fertig.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-05.jpg -->
+              <img src="assets/img/step-05.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 05 — Rohbau</span>
+              <h3>Tragendes EG-Mauerwerk</h3>
+              <p>Ihr Haus erhält die ersten Wände.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-06.jpg -->
+              <img src="assets/img/step-06.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 06 — Rohbau</span>
+              <h3>Decke über dem Erdgeschoss</h3>
+              <p>Das Erdgeschoss erhält seine Decke — geprüft in jedem Bauabschnitt.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-07.jpg -->
+              <img src="assets/img/step-07.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 07 — Rohbau</span>
+              <h3>Tragendes OG-Mauerwerk</h3>
+              <p>Es geht auf die nächste Ebene: das Mauerwerk im Ober- bzw. Dachgeschoss.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-08.jpg -->
+              <img src="assets/img/step-08.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 08 — Rohbau</span>
+              <h3>Dachstuhl — Richtfest</h3>
+              <p>Richtfest: ein großer Meilenstein und Grund zur Freude.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-09.jpg -->
+              <img src="assets/img/step-09.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 09 — Rohbau</span>
+              <h3>Dachdeckerarbeiten</h3>
+              <p>Es wird trocken auf der Baustelle.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-10.jpg -->
+              <img src="assets/img/step-10.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 10 — Ausbau</span>
+              <h3>Fenster & Eingangstüre</h3>
+              <p>Das Haus schließt sich: Fenster und Eingangstüre werden montiert.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-11.jpg -->
+              <img src="assets/img/step-11.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 11 — Ausbau</span>
+              <h3>Elektro-Rohinstallation & Innenputz</h3>
+              <p>„Es werde Licht“: Leitungen, Dosen, Innenputz.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-12.jpg -->
+              <img src="assets/img/step-12.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 12 — Ausbau</span>
+              <h3>Sanitär-Rohinstallation</h3>
+              <p>Die Installation für Bad und WC wird vorbereitet.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-13.jpg -->
+              <img src="assets/img/step-13.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 13 — Ausbau</span>
+              <h3>Estrich & Außenputz</h3>
+              <p>Innen die Böden, außen das Gesicht: Estrich und Außenputz.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-14.jpg -->
+              <img src="assets/img/step-14.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 14 — Ausbau</span>
+              <h3>Endmontage der Haustechnik</h3>
+              <p>Warm, hell und sauber: Elektro, Sanitär und Heizung fertig.</p>
+            </div>
+          </li>
+          <li class="step">
+            <figure class="step__media" aria-hidden="true">
+              <!-- Platzhalter — TODO: Baustellenfoto als assets/img/step-15.jpg -->
+              <img src="assets/img/step-15.jpg" width="960" height="540" loading="lazy" decoding="async" alt="">
+            </figure>
+            <div class="step__body">
+              <span class="step__no num-mono">Schritt 15 — Übergabe</span>
+              <h3>Fertigstellung & Hausübergabe</h3>
+              <p>Ihr Haus ist fertiggestellt — der Schlüssel gehört Ihnen.</p>
+            </div>
+          </li>
         </ol>
       </div>
     </section>
@@ -226,24 +398,23 @@
           <p class="kicker" data-reveal>Nah am Bau, nah bei Ihnen</p>
           <h2 id="orte-h" data-split>Drei Standorte im Rheinland.</h2>
         </div>
-        <div class="locations">
-          <!-- TODO: echte Adressen & Telefonnummern einsetzen -->
+      </div>
+      <div class="locations locations--bleed">
           <a class="location" href="kontakt.html#wuerselen" data-reveal>
             <h3>Würselen</h3>
-            <address>Musterstraße 12<br>52146 Würselen</address>
-            <span class="location__tel num-mono">+49 2405 00000-0</span>
+            <address>Morlaixplatz 15<br>52146 Würselen</address>
+            <span class="location__tel num-mono">+49 2405 6079832</span>
           </a>
           <a class="location" href="kontakt.html#kerpen" data-reveal data-reveal-delay="1">
             <h3>Kerpen</h3>
-            <address>Musterallee 8<br>50171 Kerpen</address>
-            <span class="location__tel num-mono">+49 2237 00000-0</span>
+            <address>Ottostraße 4a<br>50170 Kerpen</address>
+            <span class="location__tel num-mono">+49 2273 9918151</span>
           </a>
           <a class="location" href="kontakt.html#bensberg" data-reveal data-reveal-delay="2">
             <h3>Bensberg</h3>
-            <address>Musterweg 3<br>51429 Bergisch Gladbach</address>
-            <span class="location__tel num-mono">+49 2204 00000-0</span>
+            <address>Industrieweg 13<br>51429 Bergisch Gladbach</address>
+            <span class="location__tel num-mono">+49 177 4210010</span>
           </a>
-        </div>
       </div>
     </section>
 
@@ -262,7 +433,13 @@
 
   <footer class="site-foot">
     <div class="shell">
-      <p class="foot-word" aria-hidden="true">planvoller</p>
+      <div class="foot-milestones">
+        <div class="foot-milestones__bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="foot-milestones__meta">
+          <span>15 Schritte — Ihrer beginnt mit einem Gespräch</span>
+          <a href="kontakt.html">Sprechen wir →</a>
+        </div>
+      </div>
       <div class="foot-grid">
         <div>
           <h4>Planvoller GmbH</h4>
@@ -306,6 +483,7 @@
   <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
   <script defer src="assets/vendor/lenis.min.js"></script>
   <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/search.js"></script>
   <script type="importmap">
   { "imports": { "three": "./assets/vendor/three.module.min.js" } }
   </script>

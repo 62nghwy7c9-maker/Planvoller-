@@ -9,10 +9,10 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Blog — Wissen für Bauherren">
   <meta property="og:description" content="Wissen für private Bauherren, aus der Praxis der Planvoller GmbH.">
-  <meta property="og:image" content="https://www.planvoller.de/after.jpg">
+  <meta property="og:image" content="https://www.planvoller.de/assets/img/og-image.jpg">
   <meta property="og:locale" content="de_DE">
   <meta name="theme-color" content="#f3f1ec">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317181a'/%3E%3Ctext x='30' y='45' font-family='Arial' font-size='38' font-weight='700' fill='%23f3f1ec' text-anchor='middle'%3EP%3C/text%3E%3Crect x='46' y='36' width='9' height='9' fill='%23c2571f'/%3E%3C/svg%3E">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -32,7 +32,7 @@
 
   <header class="site-head">
     <div class="shell site-head__bar">
-      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite">planvoller<sup>■</sup></a>
+      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite"><img src="assets/img/planvoller-logo.svg" alt="Planvoller — Wir bauen mit Herz und Verstand" width="407" height="74"></a>
       <nav class="site-nav" aria-label="Hauptnavigation">
         <a href="planvoller.html">Planvoller</a>
         <a href="ablauf.html">Ablauf</a>
@@ -40,6 +40,9 @@
         <a href="blog.html" aria-current="page">Blog</a>
         <a class="btn" href="kontakt.html" data-magnetic><span>Bauanfrage</span></a>
       </nav>
+      <button class="search-toggle" type="button" aria-expanded="false" aria-label="Suche öffnen (Strg+K)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.3-4.3"/></svg>
+      </button>
       <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen">
         <span></span><span></span>
       </button>
@@ -73,34 +76,43 @@
       </header>
 
       <div class="post-grid section--tight">
-        <!-- TODO: Beitragsseiten anlegen, sobald Redaktionsinhalte vorliegen -->
+        <!-- TODO: Beitragsseiten verlinken, sobald Redaktionsinhalte übernommen sind -->
         <article class="post" data-reveal>
-          <span class="post__cat">Planung</span>
-          <h2>Was ein Festpreis wirklich enthalten muss</h2>
-          <p>„Festpreis" steht in fast jedem Angebot — aber nicht in jedem steckt derselbe Inhalt.
-             Die sieben Positionen, auf die Sie in der Leistungsbeschreibung achten sollten.</p>
-          <time datetime="2026-06-18">18. Juni 2026</time>
+          <span class="post__cat">Baustelle</span>
+          <h2>Der Baublog startet</h2>
+          <p>Ab jetzt berichten wir regelmäßig von unseren Baustellen: Meilensteine, Materialien,
+             Menschen — der Blick hinter die Bauzäune.</p>
+          <time datetime="2023-01-23">23. Januar 2023</time>
         </article>
         <article class="post" data-reveal data-reveal-delay="1">
-          <span class="post__cat">Grundstück</span>
-          <h2>Bodengutachten: die 2.000 Euro, die zehntausende sparen</h2>
-          <p>Warum wir vor jedem Entwurf in den Boden schauen — und was passiert, wenn man
-             es nicht tut. Ein Kapitel aus Schritt 02 unseres Ablaufs.</p>
-          <time datetime="2026-05-07">7. Mai 2026</time>
+          <span class="post__cat">Unternehmen</span>
+          <h2>Unsere neue Website ist online</h2>
+          <p>Neuer Auftritt für Planvoller: klarer, schneller und mit allem, was Bauherren
+             wirklich wissen wollen — vom Ablauf bis zu den Referenzen.</p>
+          <time datetime="2023-01-08">8. Januar 2023</time>
         </article>
         <article class="post" data-reveal data-reveal-delay="2">
-          <span class="post__cat">Bauphase</span>
+          <span class="post__cat">Ratgeber</span>
+          <h2>Was ein Festpreis wirklich enthalten muss</h2>
+          <p>„Festpreis" steht in fast jedem Angebot — aber nicht in jedem steckt derselbe Inhalt.
+             Die Positionen, auf die Sie in der Leistungsbeschreibung achten sollten.</p>
+          <time>In Vorbereitung</time>
+        </article>
+        <article class="post" data-reveal data-reveal-delay="3">
+          <span class="post__cat">Ratgeber</span>
+          <h2>Richtfest: mehr als eine schöne Tradition</h2>
+          <p>Warum Schritt 08 unseres Ablaufs gefeiert wird — und was der Dachstuhl über die
+             Qualität eines Rohbaus verrät.</p>
+          <time>In Vorbereitung</time>
+        </article>
+        <article class="post" data-reveal data-reveal-delay="4">
+          <span class="post__cat">Ratgeber</span>
           <h2>Bemusterung ohne Überforderung</h2>
           <p>Hunderte Entscheidungen an einem Tag? Nicht bei uns. Wie eine geführte Bemusterung
              abläuft und welche Entscheidungen wirklich Gewicht haben.</p>
-          <time datetime="2026-03-24">24. März 2026</time>
+          <time>In Vorbereitung</time>
         </article>
       </div>
-
-      <p class="mt-5 max-ch" data-reveal>Die Beitragsseiten befinden sich im Aufbau. Wenn Sie eine
-        konkrete Frage zu Ihrem Bauvorhaben haben, schreiben Sie uns direkt an
-        <a href="mailto:info@planvoller.de">info@planvoller.de</a> — wir antworten persönlich,
-        nicht mit einem Newsletter.</p>
     </div>
 
     <section class="section inverse cta-band" aria-labelledby="cta-h">
@@ -116,7 +128,13 @@
 
   <footer class="site-foot">
     <div class="shell">
-      <p class="foot-word" aria-hidden="true">planvoller</p>
+      <div class="foot-milestones">
+        <div class="foot-milestones__bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="foot-milestones__meta">
+          <span>15 Schritte — Ihrer beginnt mit einem Gespräch</span>
+          <a href="kontakt.html">Sprechen wir →</a>
+        </div>
+      </div>
       <div class="foot-grid">
         <div>
           <h4>Planvoller GmbH</h4>
@@ -160,5 +178,6 @@
   <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
   <script defer src="assets/vendor/lenis.min.js"></script>
   <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/search.js"></script>
 </body>
 </html>

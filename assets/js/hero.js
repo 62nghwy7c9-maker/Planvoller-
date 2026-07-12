@@ -55,7 +55,7 @@ function init() {
     32, host.clientWidth / host.clientHeight, 0.1, 60
   );
   const camStart = new THREE.Vector3(7.5, 4.2, 10.5);
-  const camEnd = new THREE.Vector3(6.2, 2.6, 8.6);
+  const camEnd = new THREE.Vector3(8.0, 3.6, 11.0);
   camera.position.copy(camStart);
   camera.lookAt(0, 1.2, 0);
 
@@ -110,31 +110,67 @@ function init() {
     return g;
   }
 
-  /* Baukörper (angelehnt an den Kubus-Typus der Referenzen).
+  /* Baukörper — Kubus-Typus der Referenzen, architektonisch detailliert.
      dropY klein genug, dass das schwebende Drahtmodell beim Laden im Bild ist. */
-  part(2.6, 2.6, 2.3, -1.15, 0.1, CONCRETE.clone().lerp(PAPER, 0.35), 1.9, 0); // Putz-Volumen
-  part(2.3, 3.1, 2.5, 1.15, -0.15, INK.clone().lerp(CONCRETE, 0.25), 2.6, 1); // Anthrazit-Volumen
-  part(2.7, 0.14, 2.9, 1.15, -0.15, INK, 3.2, 2);                             // Dachplatte
-  parts[2].userData.finalY = 3.1 + 0.07;
-  parts[2].position.y = parts[2].userData.finalY;
-  part(1.5, 0.12, 1.6, -0.1, 1.35, SAND, 1.6, 3);                             // Vordach (Holz)
-  parts[3].userData.finalY = 2.25;
-  parts[3].position.y = 2.25;
+  const PUTZ = CONCRETE.clone().lerp(PAPER, 0.4);
+  const ANTHRAZIT = INK.clone().lerp(CONCRETE, 0.22);
 
-  /* Fensterflächen — leuchten am Ende warm auf */
+  const volA = part(2.6, 2.6, 2.3, -1.15, 0.1, PUTZ, 1.9, 0);       // Putz-Volumen
+  const volB = part(2.3, 3.34, 2.5, 1.15, -0.15, ANTHRAZIT, 2.6, 1);// Anthrazit-Volumen
+  const roof = part(2.62, 0.16, 2.82, 1.15, -0.15, INK, 3.2, 2);    // Dachplatte + Attika
+  roof.userData.finalY = 3.34 + 0.08;
+  roof.position.y = roof.userData.finalY;
+  const roofA = part(2.9, 0.12, 2.6, -1.2, 0.1, INK, 2.9, 2);       // Dachplatte Volumen A
+  roofA.userData.finalY = 2.6 + 0.06;
+  roofA.position.y = roofA.userData.finalY;
+  const canopy = part(1.6, 0.1, 1.5, 0.05, 1.3, SAND, 1.6, 3);      // Vordach (Holz)
+  canopy.userData.finalY = 2.3;
+  canopy.position.y = 2.3;
+  const garage = part(1.7, 1.15, 2.0, 2.95, 0.15, PUTZ.clone().lerp(SAND, 0.35), 1.3, 3); // Garagen-Volumen
+  const plinth = part(4.7, 0.09, 2.85, 0.05, 0, INK.clone().lerp(CONCRETE, 0.4), 1.0, 0); // Sockel
+  plinth.userData.finalY = 0.045;
+  plinth.position.y = plinth.userData.finalY;
+
+  /* Fenster: dunkle Laibungsrahmen + Glasflächen, die am Ende warm leuchten */
   const winMat = new THREE.MeshBasicMaterial({
     color: 0xe8a13f, transparent: true, opacity: 0
   });
-  const windows = [];
-  function win(w, h, x, y, z) {
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), winMat);
-    m.position.set(x, y, z);
-    house.add(m);
-    windows.push(m);
+  const frameMat = new THREE.MeshStandardMaterial({
+    color: INK, roughness: 0.6, transparent: true, opacity: 0
+  });
+
+  function windowUnit(parent, w, h, x, y, z, mullions) {
+    const g = new THREE.Group();
+    const t = 0.06, d = 0.1;
+    [[0, h / 2 + t / 2, w + 2 * t, t], [0, -h / 2 - t / 2, w + 2 * t, t]].forEach(function (r) {
+      const bar = new THREE.Mesh(new THREE.BoxGeometry(r[2], r[3], d), frameMat);
+      bar.position.set(r[0], r[1], 0);
+      g.add(bar);
+    });
+    [[-w / 2 - t / 2, 0], [w / 2 + t / 2, 0]].forEach(function (r) {
+      const bar = new THREE.Mesh(new THREE.BoxGeometry(t, h, d), frameMat);
+      bar.position.set(r[0], r[1], 0);
+      g.add(bar);
+    });
+    for (let i = 1; i <= (mullions || 0); i++) {
+      const bar = new THREE.Mesh(new THREE.BoxGeometry(0.035, h, d * 0.8), frameMat);
+      bar.position.set(-w / 2 + (w / (mullions + 1)) * i, 0, 0);
+      g.add(bar);
+    }
+    const glass = new THREE.Mesh(new THREE.PlaneGeometry(w, h), winMat);
+    glass.position.z = -0.01;
+    g.add(glass);
+    g.position.set(x, y, z);
+    parent.add(g);
   }
-  win(1.5, 1.7, -1.15, 1.25, 1.262); // großes Fenster Volumen A
-  win(0.9, 1.1, 1.0, 1.0, 1.11);     // EG Volumen B
-  win(1.3, 0.8, 1.15, 2.45, 1.11);   // OG-Band Volumen B
+
+  /* Fassaden-Öffnungen (lokal zu den Volumen → fügen sich mit) */
+  windowUnit(volA, 1.5, 1.7, 0, -0.05, 1.16, 2);   // raumhohe Front Volumen A
+  windowUnit(volA, 0.8, 0.9, 1.16, 0.35, 0, 0);    // Seitenfenster A (Ostfassade)
+  volA.children[volA.children.length - 1].rotation.y = Math.PI / 2;
+  windowUnit(volB, 0.95, 1.15, -0.35, -0.75, 1.26, 1); // EG Volumen B
+  windowUnit(volB, 1.5, 0.85, 0.1, 0.85, 1.26, 2);     // OG-Band Volumen B
+  windowUnit(garage, 1.2, 0.35, 0, 0.22, 1.01, 2);     // Garagen-Lichtband
 
   /* Akzent: die eine Fuge zwischen den Volumen */
   const seam = new THREE.Mesh(
@@ -143,6 +179,26 @@ function init() {
   );
   seam.position.set(0.12, 1.3, 1.2);
   house.add(seam);
+
+  /* Kontaktschatten: weicher radialer Verlauf unter dem Haus */
+  const shadowCanvas = document.createElement("canvas");
+  shadowCanvas.width = shadowCanvas.height = 256;
+  const sctx = shadowCanvas.getContext("2d");
+  const grad = sctx.createRadialGradient(128, 128, 20, 128, 128, 126);
+  grad.addColorStop(0, "rgba(23,24,26,0.34)");
+  grad.addColorStop(1, "rgba(23,24,26,0)");
+  sctx.fillStyle = grad;
+  sctx.fillRect(0, 0, 256, 256);
+  const shadow = new THREE.Mesh(
+    new THREE.PlaneGeometry(8.4, 5.6),
+    new THREE.MeshBasicMaterial({
+      map: new THREE.CanvasTexture(shadowCanvas),
+      transparent: true, opacity: 0, depthWrite: false
+    })
+  );
+  shadow.rotation.x = -Math.PI / 2;
+  shadow.position.set(0.3, 0.004, 0);
+  scene.add(shadow);
 
   /* Startzustand: Teile schweben über ihrer Position */
   parts.forEach((p) => {
@@ -169,6 +225,8 @@ function init() {
   function phase(p, a, b) {
     return Math.min(1, Math.max(0, (p - a) / (b - a)));
   }
+
+  const heroCopy = document.querySelector(".hero__content .shell");
 
   /* Maus-Parallax */
   let mx = 0, tx = 0;
@@ -202,6 +260,11 @@ function init() {
       d.lineMat.opacity *= 1 - 0.75 * phase(p, 0.6, 0.9);
     });
 
+    /* 2b) Details materialisieren mit den Flächen */
+    const solid = easeIO(phase(p, 0.35, 0.75));
+    frameMat.opacity = solid;
+    shadow.material.opacity = solid * 0.85;
+
     /* 3) Licht an (.65 → 1) */
     const glow = easeIO(phase(p, 0.65, 0.95));
     winMat.opacity = glow * 0.95;
@@ -209,13 +272,21 @@ function init() {
     sun.color.setHex(0xdfe3e8).lerp(new THREE.Color(0xffd9ae), glow);
     seam.material.opacity = easeIO(phase(p, 0.5, 0.7)) * 0.9;
 
+    /* 4) Hero-Text weicht dem Haus, „15/15" übernimmt */
+    if (heroCopy) {
+      const fade = 1 - easeIO(phase(p, 0.5, 0.72));
+      heroCopy.style.opacity = fade;
+      heroCopy.style.visibility = fade < 0.01 ? "hidden" : "";
+    }
+    docEl.classList.toggle("hero-done", p > 0.78);
+
     /* Kamera: ruhige Annäherung + Maus-Parallax + minimale Atmung */
     mx += (tx - mx) * 0.04;
     const cp = easeIO(phase(p, 0.15, 1));
     camera.position.lerpVectors(camStart, camEnd, cp);
     const swing = mx + Math.sin(t * 0.22) * 0.015;
     camera.position.x = camera.position.x * Math.cos(swing) + camera.position.z * Math.sin(swing) * 0.35;
-    camera.lookAt(0, 1.1 + 0.3 * cp, 0);
+    camera.lookAt(0, 1.1 + 0.55 * cp, 0);
 
     renderer.render(scene, camera);
   }

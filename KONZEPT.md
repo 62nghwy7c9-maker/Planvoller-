@@ -47,17 +47,21 @@ Ein einziges Bewegungsprinzip, überall: Elemente treffen versetzt ein
 | **Micro** | Magnetische Buttons, Kontext-Cursor (nur Fein-Pointer), Bild-Hover mit Clip/Scale, Zahlen-Count-up. |
 | **Seitenwechsel** | View Transitions API (Fade + 12-px-Fügung), Fallback: Enter-Stagger pro Section. |
 
-## Getroffene Annahmen (änderbar)
+## Marken-Anbindung (Stand: Überarbeitung v2, recherchiert auf planvoller.de)
 
-- **Motion-Intensität:** „reich, aber kuratiert" — obere Mitte der Skala.
-- **Akzentfarbe:** Corten-Oxid `#C2571F` (Baustahl, warm, kein Web-Blau).
-- **Typo:** Space Grotesk (Display, variabel 300–700 für Weight-Shifts) + Inter (Text).
-- **Adressen/Telefonnummern** der Standorte sind **Platzhalter** (`<!-- TODO -->` im
-  Markup) — echte Daten bitte nachliefern.
-- **Formular** validiert clientseitig und zeigt einen Erfolgs-State; Backend-Anbindung
-  (`info@planvoller.de`) ist als TODO markiert.
-- Bilder: `before.jpg`/`after.jpg` aus dem Repo als Platzhalter — Ersatz durch echte
-  Projektfotos empfohlen (im Markup markiert).
+- **Akzentfarbe:** Marken-Rost `#A84400` (aus der Logo-Wortmarke) + Olivgrau `#808374`
+  für Claim/Kicker; auf dunklem Grund die Kontrastvariante `#CF6B26`.
+- **Typo:** Work Sans (Markenschrift, variabel 100–900, self-hosted) für Display und Text —
+  Differenzierung über Gewicht und Lauf statt über eine zweite Familie.
+- **Logo:** echtes `planvoller-logo.svg` in Header und Intro.
+- **Inhalte:** echte 15 Bau-Meilensteine, 5 echte Referenzen, echte Standortdaten
+  (Morlaixplatz 15 · Ottostraße 4a · Industrieweg 13), Impressum mit GF Harald Vonhoegen.
+- **Motion-Intensität:** „reich, aber kuratiert" — Page-Load-Intro, Hero-Fügung mit
+  „15/15"-Abschluss, Scrollytelling mit Baustellen-Media, Shared-Element-Transitions.
+- **Formular** validiert clientseitig; Versand per `data-endpoint` (POST) oder
+  mailto-Fallback an info@planvoller.de.
+- Bilder: Platzhalter unter fester Namenskonvention in `assets/img/` — echte Fotos
+  ersetzen sie ohne Markup-Änderung (siehe README).
 
 ## Tech
 

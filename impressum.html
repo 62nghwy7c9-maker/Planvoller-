@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://www.planvoller.de/impressum.html">
   <meta name="theme-color" content="#f3f1ec">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317181a'/%3E%3Ctext x='30' y='45' font-family='Arial' font-size='38' font-weight='700' fill='%23f3f1ec' text-anchor='middle'%3EP%3C/text%3E%3Crect x='46' y='36' width='9' height='9' fill='%23c2571f'/%3E%3C/svg%3E">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -18,7 +18,7 @@
 
   <header class="site-head">
     <div class="shell site-head__bar">
-      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite">planvoller<sup>■</sup></a>
+      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite"><img src="assets/img/planvoller-logo.svg" alt="Planvoller — Wir bauen mit Herz und Verstand" width="407" height="74"></a>
       <nav class="site-nav" aria-label="Hauptnavigation">
         <a href="planvoller.html">Planvoller</a>
         <a href="ablauf.html">Ablauf</a>
@@ -26,6 +26,9 @@
         <a href="blog.html">Blog</a>
         <a class="btn" href="kontakt.html" data-magnetic><span>Bauanfrage</span></a>
       </nav>
+      <button class="search-toggle" type="button" aria-expanded="false" aria-label="Suche öffnen (Strg+K)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.3-4.3"/></svg>
+      </button>
       <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen">
         <span></span><span></span>
       </button>
@@ -56,20 +59,19 @@
         <h1>Impressum</h1>
       </header>
       <div class="prose" style="padding-bottom: var(--sp-6);">
-        <!-- TODO: Angaben rechtlich prüfen und vervollständigen (Geschäftsführung,
-             Registergericht, HRB-Nummer, USt-IdNr., verantwortliche Person i.S.d. § 18 MStV) -->
+        <!-- TODO: Registergericht + HRB-Nummer ergänzen und rechtlich prüfen lassen -->
         <h2>Angaben gemäß § 5 DDG</h2>
-        <p>Planvoller GmbH<br>Musterstraße 12<br>52146 Würselen</p>
+        <p>Planvoller GmbH<br>Morlaixplatz 15<br>52146 Würselen</p>
         <p>E-Mail: <a href="mailto:info@planvoller.de">info@planvoller.de</a><br>
-           Telefon: +49 2405 00000-0</p>
+           Telefon: <a href="tel:+4924056079832">+49 2405 6079832</a></p>
         <h2>Vertreten durch</h2>
-        <p>Geschäftsführung: [TODO: Name der Geschäftsführung]</p>
+        <p>Geschäftsführer: Harald Vonhoegen</p>
         <h2>Registereintrag</h2>
         <p>Registergericht: [TODO]<br>Registernummer: HRB [TODO]</p>
         <h2>Umsatzsteuer-ID</h2>
-        <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE [TODO]</p>
+        <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE316989509</p>
         <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-        <p>[TODO: Name, Anschrift]</p>
+        <p>Harald Vonhoegen, Morlaixplatz 15, 52146 Würselen</p>
         <h2>Streitschlichtung</h2>
         <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
            Verbraucherschlichtungsstelle teilzunehmen.</p>
@@ -90,5 +92,6 @@
   <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
   <script defer src="assets/vendor/lenis.min.js"></script>
   <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/search.js"></script>
 </body>
 </html>

@@ -23,6 +23,7 @@
   var STAGGER = 0.06;
 
   var lenis = null;
+  var INTRO_DELAY = 0; // wird gesetzt, wenn das Load-Intro spielt
 
   document.addEventListener("DOMContentLoaded", function () {
     initHeader();
@@ -30,20 +31,26 @@
     initFootYear();
     initForm();
     initCompare();
+    initGallery();
+    initViewTransitionNames();
+    initScrollFlag();
 
     if (!HAS_GSAP || REDUCED) return; // ruhige Vollversion: alles statisch sichtbar
 
     gsap.registerPlugin(ScrollTrigger);
     gsap.defaults({ ease: EASE_SNAP, duration: DUR.scene });
 
+    initIntro();
     initLenis();
     initSplitText();
     initReveals();
+    initMediaReveals();
     initHairlines();
     initManifest();
     initCounters();
     initParallax();
     initSteps();
+    initFootMilestones();
     if (FINE) {
       initCursor();
       initMagnetic();
@@ -52,6 +59,60 @@
     // Nach Fonts/Bildern die Trigger-Positionen korrigieren (kein Layout-Shift-Risiko)
     window.addEventListener("load", function () { ScrollTrigger.refresh(); });
   });
+
+  /* ---------- Page-Load-Intro: das Logo fügt sich (1× pro Session) ---------- */
+  function initIntro() {
+    var KEY = "pv-intro";
+    try { if (sessionStorage.getItem(KEY)) return; sessionStorage.setItem(KEY, "1"); }
+    catch (e) { return; }
+
+    var overlay = document.createElement("div");
+    overlay.className = "intro";
+    overlay.setAttribute("aria-hidden", "true");
+    var logo = "assets/img/planvoller-logo.svg";
+    overlay.innerHTML =
+      '<div class="intro__mark">' +
+      '<span class="intro__half intro__half--l"><img src="' + logo + '" alt=""></span>' +
+      '<span class="intro__half intro__half--r"><img src="' + logo + '" alt=""></span>' +
+      '<span class="intro__seam"></span>' +
+      "</div>";
+    document.body.appendChild(overlay);
+    document.body.style.overflow = "hidden";
+
+    INTRO_DELAY = 1.05;
+
+    var tl = gsap.timeline({
+      onComplete: function () {
+        overlay.remove();
+        document.body.style.overflow = "";
+      }
+    });
+    tl.fromTo(".intro__half--l", { xPercent: -7, opacity: 0 },
+        { xPercent: 0, opacity: 1, duration: 0.55, ease: EASE_SNAP })
+      .fromTo(".intro__half--r", { xPercent: 7, opacity: 0 },
+        { xPercent: 0, opacity: 1, duration: 0.55, ease: EASE_SNAP }, "<")
+      .to(".intro__seam", { scaleY: 1, duration: 0.3, ease: "power4.inOut" }, "-=0.2")
+      .to(".intro__seam", { scaleY: 0, transformOrigin: "top center", duration: 0.2, ease: "power4.in" }, "+=0.1")
+      .to(overlay, { clipPath: "inset(0 0 100% 0)", duration: 0.5, ease: "power4.inOut" }, "-=0.05");
+  }
+
+  /* ---------- Scroll-Flag (Scrollhint ausblenden) ---------- */
+  function initScrollFlag() {
+    var onScroll = function () {
+      if (window.scrollY > 40) {
+        docEl.classList.add("has-scrolled");
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  /* ---------- Shared-Element-Transitions vorbereiten ---------- */
+  function initViewTransitionNames() {
+    document.querySelectorAll("[data-vt]").forEach(function (el) {
+      el.style.viewTransitionName = el.getAttribute("data-vt");
+    });
+  }
 
   /* ---------- Smooth-Scroll (Lenis) ---------- */
   function initLenis() {
@@ -98,7 +159,7 @@
           yPercent: 0, y: 0,
           duration: DUR.scene,
           stagger: STAGGER,
-          delay: inHero ? 0.15 : 0,
+          delay: inHero ? 0.15 + INTRO_DELAY : 0,
           // Hero: Entrance beim Laden; sonst beim Einscrollen
           scrollTrigger: inHero ? undefined : { trigger: el, start: "top 88%", once: true }
         });
@@ -156,11 +217,42 @@
         clipPath: dir === "clip" ? "inset(0 0 0% 0)" : undefined,
         duration: DUR.scene,
         delay: (parseInt(el.getAttribute("data-reveal-delay") || "0", 10) * STAGGER)
-               + (inHero ? 0.45 : 0),
+               + (inHero ? 0.45 + INTRO_DELAY : 0),
         ease: EASE_SNAP,
         scrollTrigger: inHero ? undefined : { trigger: el, start: "top 88%", once: true },
         clearProps: "clipPath"
       });
+    });
+  }
+
+  /* ---------- Media-Reveals: Clip-Wipe von unten + Inner-Scale ---------- */
+  function initMediaReveals() {
+    document.querySelectorAll("[data-media-reveal]").forEach(function (el) {
+      var img = el.querySelector("img");
+      var tl = gsap.timeline({
+        scrollTrigger: { trigger: el, start: "top 86%", once: true },
+        onComplete: function () {
+          el.classList.add("is-revealed");
+          gsap.set(el, { clearProps: "clipPath" });
+          if (img) gsap.set(img, { clearProps: "transform" });
+        }
+      });
+      tl.fromTo(el, { clipPath: "inset(100% 0 0 0)" },
+        { clipPath: "inset(0% 0 0 0)", duration: 0.9, ease: "power4.inOut" });
+      if (img) tl.fromTo(img, { scale: 1.06 }, { scale: 1, duration: 0.9, ease: "power4.out" }, "<");
+    });
+  }
+
+  /* ---------- Footer: Meilenstein-Leiste fügt sich ---------- */
+  function initFootMilestones() {
+    var bar = document.querySelector(".foot-milestones__bar");
+    if (!bar) return;
+    gsap.fromTo(bar.querySelectorAll("i"), { scaleX: 0 }, {
+      scaleX: 1,
+      duration: DUR.el,
+      stagger: 0.045,
+      ease: EASE_SNAP,
+      scrollTrigger: { trigger: bar, start: "top 94%", once: true }
     });
   }
 
@@ -232,7 +324,7 @@
     mm.add("(min-width: 900px)", function () {
       var steps = gsap.utils.toArray(root.querySelectorAll(".step"));
       var current = root.querySelector("[data-step-current]");
-      var bar = root.querySelector("[data-step-bar]");
+      var ticks = root.querySelectorAll("[data-step-ticks] i");
       var pin = root.querySelector(".steps__pin");
       if (steps.length < 2 || !pin) return;
 
@@ -252,7 +344,7 @@
               Math.floor(self.progress * steps.length)
             );
             if (current) current.textContent = pad(idx + 1);
-            if (bar) bar.style.transform = "scaleX(" + self.progress + ")";
+            ticks.forEach(function (t, i) { t.classList.toggle("is-done", i <= idx); });
           }
         }
       });
@@ -318,6 +410,48 @@
     });
   }
 
+  /* ---------- Galerie-Slider (Scroll-Snap, Referenz-Detail) ---------- */
+  function initGallery() {
+    document.querySelectorAll("[data-gallery]").forEach(function (root) {
+      var track = root.querySelector(".gallery__track");
+      var slides = track ? track.querySelectorAll(".figure") : [];
+      if (!track || slides.length < 2) return;
+      var count = root.querySelector("[data-gallery-count]");
+      var bar = root.querySelector(".gallery__bar span");
+      var total = slides.length;
+
+      function update() {
+        var max = track.scrollWidth - track.clientWidth;
+        var p = max > 0 ? track.scrollLeft / max : 0;
+        var idx = Math.round(p * (total - 1));
+        if (count) count.textContent = pad(idx + 1) + " / " + pad(total);
+        if (bar) bar.style.transform = "scaleX(" + ((idx + 1) / total) + ")";
+      }
+      track.addEventListener("scroll", update, { passive: true });
+      update();
+
+      function go(dir) {
+        var w = slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
+        track.scrollBy({ left: dir * w, behavior: REDUCED ? "auto" : "smooth" });
+      }
+      var prev = root.querySelector("[data-gallery-prev]");
+      var next = root.querySelector("[data-gallery-next]");
+      if (prev) prev.addEventListener("click", function () { go(-1); });
+      if (next) next.addEventListener("click", function () { go(1); });
+    });
+
+    /* Share: Link kopieren */
+    document.querySelectorAll("[data-copy-link]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        navigator.clipboard.writeText(location.href).then(function () {
+          var t = btn.textContent;
+          btn.textContent = "Kopiert ✓";
+          setTimeout(function () { btn.textContent = t; }, 1600);
+        });
+      });
+    });
+  }
+
   /* ---------- Magnetische Buttons ---------- */
   function initMagnetic() {
     document.querySelectorAll("[data-magnetic]").forEach(function (el) {
@@ -356,7 +490,10 @@
 
     document.addEventListener("mouseover", function (e) {
       var t = e.target;
-      if (t.closest(".case, .post")) {
+      var labelled = t.closest("[data-cursor-label]");
+      if (labelled || t.closest(".case, .post")) {
+        ring.setAttribute("data-label",
+          labelled ? labelled.getAttribute("data-cursor-label") : "Ansehen");
         docEl.classList.add("cursor-view"); docEl.classList.remove("cursor-hover");
       } else if (t.closest("a, button, input, select, textarea, label, [data-compare]")) {
         docEl.classList.add("cursor-hover"); docEl.classList.remove("cursor-view");
@@ -429,11 +566,37 @@
         if (firstInvalid) firstInvalid.focus();
         return;
       }
-      /* TODO Backend: hier per fetch() an den Formular-Endpoint senden
-         (z. B. eigenes Script an info@planvoller.de). Aktuell nur UI-State. */
-      form.classList.add("is-sent");
+      /* Versand: data-endpoint (POST, FormData) — z. B. eigenes Mail-Script
+         beim Hoster. Ohne Endpoint: mailto-Fallback an info@planvoller.de. */
+      var endpoint = form.getAttribute("data-endpoint");
       var success = form.querySelector(".form__success");
-      if (success) success.focus();
+      var errorBox = form.querySelector(".form__error");
+      var submitBtn = form.querySelector('[type="submit"]');
+
+      function sent() {
+        form.classList.add("is-sent");
+        if (success) success.focus();
+      }
+      function failed() {
+        if (errorBox) errorBox.hidden = false;
+        if (submitBtn) submitBtn.disabled = false;
+      }
+
+      if (endpoint) {
+        if (errorBox) errorBox.hidden = true;
+        if (submitBtn) submitBtn.disabled = true;
+        fetch(endpoint, { method: "POST", body: new FormData(form) })
+          .then(function (res) { res.ok ? sent() : failed(); })
+          .catch(failed);
+      } else {
+        var data = new FormData(form);
+        var lines = [];
+        data.forEach(function (v, k) { if (v && k !== "consent") lines.push(k + ": " + v); });
+        location.href = "mailto:info@planvoller.de"
+          + "?subject=" + encodeURIComponent("Bauanfrage über planvoller.de")
+          + "&body=" + encodeURIComponent(lines.join("\n"));
+        sent();
+      }
     });
     form.querySelectorAll("input, textarea, select").forEach(function (input) {
       input.addEventListener("input", function () {

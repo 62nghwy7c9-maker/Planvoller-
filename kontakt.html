@@ -9,10 +9,10 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Kontakt & Bauanfrage — Planvoller GmbH">
   <meta property="og:description" content="Der erste Schritt zum Traumhaus: Ihre Bauanfrage.">
-  <meta property="og:image" content="https://www.planvoller.de/after.jpg">
+  <meta property="og:image" content="https://www.planvoller.de/assets/img/og-image.jpg">
   <meta property="og:locale" content="de_DE">
   <meta name="theme-color" content="#f3f1ec">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317181a'/%3E%3Ctext x='30' y='45' font-family='Arial' font-size='38' font-weight='700' fill='%23f3f1ec' text-anchor='middle'%3EP%3C/text%3E%3Crect x='46' y='36' width='9' height='9' fill='%23c2571f'/%3E%3C/svg%3E">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -34,8 +34,8 @@
       "@id": "https://www.planvoller.de/kontakt.html#wuerselen",
       "name": "Planvoller GmbH — Standort Würselen",
       "email": "info@planvoller.de",
-      "telephone": "+49 2405 00000-0",
-      "address": { "@type": "PostalAddress", "streetAddress": "Musterstraße 12", "addressLocality": "Würselen", "postalCode": "52146", "addressCountry": "DE" },
+      "telephone": "+49 2405 6079832",
+      "address": { "@type": "PostalAddress", "streetAddress": "Morlaixplatz 15", "addressLocality": "Würselen", "postalCode": "52146", "addressCountry": "DE" },
       "parentOrganization": { "@type": "Organization", "name": "Planvoller GmbH" }
     },
     {
@@ -44,8 +44,8 @@
       "@id": "https://www.planvoller.de/kontakt.html#kerpen",
       "name": "Planvoller GmbH — Standort Kerpen",
       "email": "info@planvoller.de",
-      "telephone": "+49 2237 00000-0",
-      "address": { "@type": "PostalAddress", "streetAddress": "Musterallee 8", "addressLocality": "Kerpen", "postalCode": "50171", "addressCountry": "DE" },
+      "telephone": "+49 2273 9918151",
+      "address": { "@type": "PostalAddress", "streetAddress": "Ottostraße 4a", "addressLocality": "Kerpen", "postalCode": "50170", "addressCountry": "DE" },
       "parentOrganization": { "@type": "Organization", "name": "Planvoller GmbH" }
     },
     {
@@ -54,8 +54,8 @@
       "@id": "https://www.planvoller.de/kontakt.html#bensberg",
       "name": "Planvoller GmbH — Standort Bensberg",
       "email": "info@planvoller.de",
-      "telephone": "+49 2204 00000-0",
-      "address": { "@type": "PostalAddress", "streetAddress": "Musterweg 3", "addressLocality": "Bergisch Gladbach", "postalCode": "51429", "addressCountry": "DE" },
+      "telephone": "+49 177 4210010",
+      "address": { "@type": "PostalAddress", "streetAddress": "Industrieweg 13", "addressLocality": "Bergisch Gladbach", "postalCode": "51429", "addressCountry": "DE" },
       "parentOrganization": { "@type": "Organization", "name": "Planvoller GmbH" }
     }
   ]
@@ -66,7 +66,7 @@
 
   <header class="site-head">
     <div class="shell site-head__bar">
-      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite">planvoller<sup>■</sup></a>
+      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite"><img src="assets/img/planvoller-logo.svg" alt="Planvoller — Wir bauen mit Herz und Verstand" width="407" height="74"></a>
       <nav class="site-nav" aria-label="Hauptnavigation">
         <a href="planvoller.html">Planvoller</a>
         <a href="ablauf.html">Ablauf</a>
@@ -74,6 +74,9 @@
         <a href="blog.html">Blog</a>
         <a class="btn" href="kontakt.html" aria-current="page" data-magnetic><span>Bauanfrage</span></a>
       </nav>
+      <button class="search-toggle" type="button" aria-expanded="false" aria-label="Suche öffnen (Strg+K)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.3-4.3"/></svg>
+      </button>
       <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen">
         <span></span><span></span>
       </button>
@@ -128,6 +131,21 @@
                 <input id="f-tel" name="tel" type="tel" autocomplete="tel">
               </div>
               <div class="field">
+                <label for="f-wohnort">Ihr Wohnort</label>
+                <input id="f-wohnort" name="wohnort" type="text" autocomplete="address-level2">
+              </div>
+              <div class="field">
+                <label for="f-anliegen">Ihr Anliegen *</label>
+                <select id="f-anliegen" name="anliegen" required>
+                  <option value="">Bitte wählen</option>
+                  <option value="bauanfrage">Bauanfrage</option>
+                  <option value="grundstueck">Grundstücksangebot</option>
+                  <option value="allgemein">Allgemeine Anfrage</option>
+                  <option value="sonstiges">Sonstiges</option>
+                </select>
+                <span class="field__error" role="alert">Bitte wählen Sie Ihr Anliegen.</span>
+              </div>
+              <div class="field">
                 <label for="f-ort">Wunsch-Standort</label>
                 <select id="f-ort" name="standort">
                   <option value="">Bitte wählen</option>
@@ -174,6 +192,9 @@
             <button class="btn" type="submit" data-magnetic>
               <span>Bauanfrage senden</span><span class="btn__arrow" aria-hidden="true">→</span>
             </button>
+            <p class="form__error" role="alert" hidden>Das hat leider nicht geklappt. Bitte versuchen
+              Sie es erneut oder schreiben Sie uns direkt an
+              <a href="mailto:info@planvoller.de">info@planvoller.de</a>.</p>
           </div>
           <div class="form__success" role="status" tabindex="-1">
             Vielen Dank — Ihre Anfrage ist angekommen.<br>
@@ -182,21 +203,20 @@
         </form>
 
         <aside class="contact-cards" aria-label="Standorte">
-          <!-- TODO: echte Adressen & Telefonnummern einsetzen -->
           <div class="contact-card" id="wuerselen" data-reveal>
             <h3>Würselen</h3>
-            <address>Musterstraße 12<br>52146 Würselen</address>
-            <a class="num-mono" href="tel:+49240500000">+49 2405 00000-0</a>
+            <address>Morlaixplatz 15<br>52146 Würselen</address>
+            <a class="num-mono" href="tel:+4924056079832">+49 2405 6079832</a>
           </div>
           <div class="contact-card" id="kerpen" data-reveal data-reveal-delay="1">
             <h3>Kerpen</h3>
-            <address>Musterallee 8<br>50171 Kerpen</address>
-            <a class="num-mono" href="tel:+49223700000">+49 2237 00000-0</a>
+            <address>Ottostraße 4a<br>50170 Kerpen</address>
+            <a class="num-mono" href="tel:+4922739918151">+49 2273 9918151</a>
           </div>
           <div class="contact-card" id="bensberg" data-reveal data-reveal-delay="2">
             <h3>Bensberg</h3>
-            <address>Musterweg 3<br>51429 Bergisch Gladbach</address>
-            <a class="num-mono" href="tel:+49220400000">+49 2204 00000-0</a>
+            <address>Industrieweg 13<br>51429 Bergisch Gladbach</address>
+            <a class="num-mono" href="tel:+491774210010">+49 177 4210010</a>
           </div>
           <div class="contact-card" data-reveal data-reveal-delay="3">
             <h3>Direkt</h3>
@@ -209,7 +229,13 @@
 
   <footer class="site-foot">
     <div class="shell">
-      <p class="foot-word" aria-hidden="true">planvoller</p>
+      <div class="foot-milestones">
+        <div class="foot-milestones__bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="foot-milestones__meta">
+          <span>15 Schritte — Ihrer beginnt mit einem Gespräch</span>
+          <a href="kontakt.html">Sprechen wir →</a>
+        </div>
+      </div>
       <div class="foot-grid">
         <div>
           <h4>Planvoller GmbH</h4>
@@ -253,5 +279,6 @@
   <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
   <script defer src="assets/vendor/lenis.min.js"></script>
   <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/search.js"></script>
 </body>
 </html>
