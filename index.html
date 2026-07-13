@@ -39,12 +39,12 @@
   }
   </script>
 </head>
-<body>
+<body class="has-hero">
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <header class="site-head">
     <div class="shell site-head__bar">
-      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite"><img src="assets/img/planvoller-logo.svg" alt="Planvoller — Wir bauen mit Herz und Verstand" width="407" height="74"></a>
+      <a class="wordmark" href="index.html" aria-label="Planvoller — Startseite"><img class="wordmark__dark" src="assets/img/planvoller-logo.svg" alt="Planvoller — Wir bauen mit Herz und Verstand" width="407" height="74"><img class="wordmark__light" src="assets/img/planvoller-logo-light.svg" alt="" width="407" height="74" aria-hidden="true"></a>
       <nav class="site-nav" aria-label="Hauptnavigation">
         <a href="planvoller.html">Planvoller</a>
         <a href="ablauf.html">Ablauf</a>
@@ -72,8 +72,14 @@
 
   <main id="main">
 
-    <!-- ============ HERO ============ -->
+    <!-- ============ HERO: Vollbild-Hintergrundvideo ============ -->
     <section class="hero" aria-label="Intro">
+      <div class="hero__bg" aria-hidden="true">
+        <video poster="assets/video/haus-poster.jpg" muted loop playsinline preload="auto" autoplay>
+          <source src="assets/video/haus.webm" type="video/webm">
+          <source src="assets/video/haus.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="shell">
         <h1>Wir bauen mit Herz und Verstand.</h1>
         <div class="hero__foot">
@@ -84,15 +90,8 @@
             <a class="btn btn--ghost" href="referenzen.html"><span>Referenzen</span></a>
           </div>
         </div>
-        <figure class="hero__media">
-          <img src="assets/img/hero-home.jpg" width="1600" height="1133" fetchpriority="high"
-               alt="Stadtvilla mit Walmdach und rot abgesetzter Fassade — gebaut von der Planvoller GmbH">
-          <figcaption>
-            <span>Stadtvilla Reichert — übergeben 2017</span>
-            <span>Würselen · Kerpen · Bensberg</span>
-          </figcaption>
-        </figure>
       </div>
+      <span class="hero__scroll" aria-hidden="true">Scrollen</span>
     </section>
 
     <!-- ============ STATEMENT + KENNZAHLEN ============ -->
@@ -214,32 +213,24 @@
 
 
 
-    <!-- ============ FILM: Vom Rohbau zum Zuhause ============ -->
+    <!-- ============ FILM: Der Rohbau ============ -->
     <section class="section" id="wandel" aria-labelledby="film-h">
       <div class="shell">
         <div class="sec-head">
           <span class="sec-head__label"><i>04</i>Der Beweis</span>
         </div>
-        <h2 id="film-h">Vom Rohbau zum Zuhause.</h2>
-        <div class="filmstrip mt-4" data-reveal>
-          <figure class="film film--to">
+        <h2 id="film-h">Qualität entsteht im Rohbau.</h2>
+        <figure class="filmband mt-4" data-reveal>
+          <span class="filmband__media">
             <video poster="assets/video/rohbau-poster.jpg" muted loop playsinline preload="metadata" autoplay
                    aria-label="Rohbau der Planvoller GmbH: Betonschale mit Kran auf der Baustelle">
               <source src="assets/video/rohbau.webm" type="video/webm">
               <source src="assets/video/rohbau.mp4" type="video/mp4">
             </video>
-            <figcaption class="film__label"><i>01</i>Rohbau</figcaption>
-          </figure>
-          <figure class="film">
-            <video poster="assets/video/haus-poster.jpg" muted loop playsinline preload="metadata" autoplay
-                   aria-label="Fertiggestelltes Wohnhaus der Planvoller GmbH am Abend, warm beleuchtet">
-              <source src="assets/video/haus.webm" type="video/webm">
-              <source src="assets/video/haus.mp4" type="video/mp4">
-            </video>
-            <figcaption class="film__label"><i>02</i>Bezogen</figcaption>
-          </figure>
-        </div>
-        <p class="compare-hint">Zwei Filme, ein Weg — dieselbe Sorgfalt vom ersten Beton bis zum bezogenen Haus.</p>
+          </span>
+          <figcaption class="filmband__label"><i>01</i>Rohbau — jede Kante kontrolliert</figcaption>
+        </figure>
+        <p class="compare-hint">Ohne Dachüberstand entscheidet die Präzision der Gebäudehülle — Millimeterarbeit im Maßstab 1:1.</p>
       </div>
     </section>
 

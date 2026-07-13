@@ -156,7 +156,7 @@
   });
 
   /* ---------- Loop-Videos: nur sichtbar abspielen, Reduced-Motion respektieren ---------- */
-  var loopVideos = document.querySelectorAll(".film video[autoplay]");
+  var loopVideos = document.querySelectorAll("video[autoplay]");
   if (loopVideos.length) {
     if (reduceMotion) {
       loopVideos.forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); });
