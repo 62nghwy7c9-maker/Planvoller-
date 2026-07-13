@@ -164,6 +164,8 @@
       var vio = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           var v = entry.target;
+          var once = !v.hasAttribute("loop");
+          if (once && v.ended) return;           /* auf letztem Bild stehen bleiben */
           if (entry.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
           else v.pause();
         });
