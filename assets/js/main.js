@@ -188,7 +188,7 @@
     }
     setTimeout(function () {
       document.documentElement.classList.remove("from-intro");
-    }, 1800);
+    }, 2100);
   }
 
   /* ---------- Intro-Overlay (Startseite) ---------- */
@@ -211,7 +211,7 @@
         var pr = heroVid.play();
         if (pr && pr.catch) pr.catch(function () {});
       }
-      setTimeout(function () { intro.remove(); }, 1100);
+      setTimeout(function () { intro.remove(); }, 2100);
     };
     window.addEventListener("message", function (e) {
       if (e && e.data && e.data.planvollerIntro === "done") finishIntro();

@@ -115,19 +115,25 @@ ul[role="list"], ol[role="list"] { list-style: none; margin: 0; padding: 0; }
 }
 
 /* ---------- Intro-Overlay (Startseite, einmal pro Sitzung) ---------- */
-.intro { position: fixed; inset: 0; z-index: 100; background: #a84400; display: none;
-  opacity: 1; transition: opacity 1s ease; }
+.intro { position: fixed; inset: 0; z-index: 100; background: #a84400; display: none; }
 html.show-intro .intro, .intro.is-leaving { display: block; }
 html.show-intro body { overflow: hidden; }
-.intro.is-leaving { opacity: 0; pointer-events: none; }
+.intro.is-leaving { animation: pvHandoff 1.8s cubic-bezier(.45, 0, .25, 1) forwards; pointer-events: none; }
+.intro.is-leaving iframe { opacity: 0; transition: opacity .25s ease; }
 .intro iframe { width: 100%; height: 100%; border: 0; display: block; }
 
-/* Ankunft vom Standalone-Intro: weiche Einblendung aus dem Intro-Ton */
+/* Ankunft vom Standalone-Intro: Orange -> Gelb -> Licht des Hauses */
 html.from-intro body::after { content: ""; position: fixed; inset: 0; z-index: 200;
   background: #a84400; pointer-events: none;
-  animation: pvHandoff 1.4s cubic-bezier(.4, 0, .2, 1) .15s forwards; }
-@keyframes pvHandoff { to { opacity: 0; visibility: hidden; } }
-@media (prefers-reduced-motion: reduce) { html.from-intro body::after { display: none; } }
+  animation: pvHandoff 1.8s cubic-bezier(.45, 0, .25, 1) .1s forwards; }
+@keyframes pvHandoff {
+  0%   { background: #a84400; opacity: 1; }
+  38%  { background: #d98a1c; opacity: 1; }     /* ins Bernstein */
+  62%  { background: #f6c14e; opacity: .92; }   /* ins Gelb */
+  82%  { background: #ffdf96; opacity: .55; }   /* ins Fensterlicht */
+  100% { background: #ffedc4; opacity: 0; visibility: hidden; }
+}
+@media (prefers-reduced-motion: reduce) { html.from-intro body::after, .intro.is-leaving { display: none; } }
 
 /* ---------- Hero (Startseite): Vollbild-Hintergrundvideo ---------- */
 .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end;
