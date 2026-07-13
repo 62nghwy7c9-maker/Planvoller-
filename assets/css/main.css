@@ -324,6 +324,23 @@ body.has-hero .site-head.is-scrolled .menu-toggle span { background: var(--ink);
 .value p { margin: 0; color: var(--grey); font-size: .98rem; }
 @media (max-width: 800px) { .values { grid-template-columns: 1fr; } }
 
+/* ---------- Kompetenz-Tabs (Warum Planvoller?) ---------- */
+.tabs { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+.tablist { display: flex; gap: clamp(.4rem, 2vw, 2rem); border-bottom: 1px solid var(--hair);
+  overflow-x: auto; scrollbar-width: none; }
+.tablist::-webkit-scrollbar { display: none; }
+.tab { flex: none; background: none; border: 0; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; padding: .85em .2em; font: inherit; font-weight: 550; font-size: 1rem;
+  color: var(--grey); white-space: nowrap; cursor: pointer; transition: color .18s, border-color .18s; }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tabpanel { padding-top: clamp(1.6rem, 3.5vw, 2.6rem); max-width: 48em; }
+.tabpanel[hidden] { display: none; }
+.tabpanel h3 { font-size: clamp(1.35rem, 2.6vw, 1.9rem); margin-bottom: .7em; }
+.tabpanel p { color: var(--grey); }
+.tabpanel p + p { margin-top: 0; }
+.tabpanel .q { color: var(--ink); font-weight: 550; }
+
 /* ---------- Team ---------- */
 .team-groups { display: grid; gap: clamp(2.5rem, 5vw, 4rem); }
 .team-group { display: block; }

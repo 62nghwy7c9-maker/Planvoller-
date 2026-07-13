@@ -174,6 +174,39 @@
     }
   }
 
+  /* ---------- Kompetenz-Tabs ---------- */
+  document.querySelectorAll(".tabs").forEach(function (tabs) {
+    var tablist = tabs.querySelector('[role="tablist"]');
+    if (!tablist) return;
+    var tabsArr = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+    var select = function (tab) {
+      tabsArr.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      });
+    };
+    tablist.addEventListener("click", function (e) {
+      var tab = e.target.closest('[role="tab"]');
+      if (tab) select(tab);
+    });
+    tablist.addEventListener("keydown", function (e) {
+      var i = tabsArr.indexOf(document.activeElement);
+      if (i < 0) return;
+      var n = i;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") n = (i + 1) % tabsArr.length;
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") n = (i - 1 + tabsArr.length) % tabsArr.length;
+      else if (e.key === "Home") n = 0;
+      else if (e.key === "End") n = tabsArr.length - 1;
+      else return;
+      e.preventDefault();
+      tabsArr[n].focus();
+      select(tabsArr[n]);
+    });
+  });
+
   /* ---------- Jahreszahl im Footer ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = String(new Date().getFullYear());
