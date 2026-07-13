@@ -4041,7 +4041,7 @@ void main() {
 </script>
 <div id="pv-enter" aria-hidden="true"></div>
 <style>
-#pv-enter{position:fixed;inset:0;z-index:60;background:#faf9f5;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease}
+#pv-enter{position:fixed;inset:0;z-index:60;background:#a84400;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease}
 </style>
 <script>
 (function(){
@@ -4056,7 +4056,7 @@ void main() {
   function go(){
     try{sessionStorage.setItem("pvIntro","1");}catch(e){}
     if(embedded){ try{parent.postMessage({planvollerIntro:"done"},"*");}catch(e){} }
-    else if(NEXT_URL){ window.location.assign(NEXT_URL); }
+    else if(NEXT_URL){ try{sessionStorage.setItem("pvHandoff","1");}catch(e){} window.location.assign(NEXT_URL); }
   }
   function update(){
     raf=0;

@@ -43,6 +43,12 @@
      Desktop: als Overlay mit Crossfade. Touch: als eigene Seite (natives Scrollen). */
   (function () {
     try {
+      if (sessionStorage.getItem("pvHandoff")) {
+        sessionStorage.removeItem("pvHandoff");
+        document.documentElement.classList.add("from-intro");
+      }
+    } catch (e) {}
+    try {
       if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       if (sessionStorage.getItem("pvIntro")) return;
       if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
