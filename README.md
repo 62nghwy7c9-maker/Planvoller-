@@ -59,6 +59,10 @@ Perspektive.
 
 1. **Formular-Backend**: `data-endpoint="…"` am `<form>` in `kontakt.html` setzen
    (POST, FormData); ohne Endpoint öffnet sich als Fallback ein E-Mail-Entwurf.
-2. **Impressum**: Registergericht + HRB-Nummer ergänzen; Rechtstexte prüfen lassen.
+2. **Rechtstexte** (Impressum/Datenschutz) vor Livegang anwaltlich prüfen lassen;
+   Registerdaten (Amtsgericht Aachen, HRB 21620) sind eingetragen. Falls Tätigkeit
+   nach § 34c GewO: zuständige Aufsichtsbehörde im Impressum ergänzen.
 3. Blog-Beitragsseiten anlegen (Übersicht steht).
 4. Optional: echte Fotos statt Renderings, sobald Projektfotografie vorliegt.
+5. **Bildrechte prüfen**: Für die verwendeten Renderings müssen Nutzungsrechte
+   für die Website-Veröffentlichung vorliegen (Lizenz/Quelle dokumentieren).
