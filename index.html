@@ -39,13 +39,16 @@
   }
   </script>
   <script>
-  /* Intro nur einmal pro Sitzung, nie bei reduzierter Bewegung */
+  /* Intro einmal pro Sitzung, nie bei reduzierter Bewegung.
+     Desktop: als Overlay mit Crossfade. Touch: als eigene Seite (natives Scrollen). */
   (function () {
     try {
-      if (matchMedia("(hover: hover) and (pointer: fine)").matches &&
-          !matchMedia("(prefers-reduced-motion: reduce)").matches &&
-          !sessionStorage.getItem("pvIntro")) {
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (sessionStorage.getItem("pvIntro")) return;
+      if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
         document.documentElement.classList.add("show-intro");
+      } else {
+        location.replace("intro.html");
       }
     } catch (e) {}
   })();

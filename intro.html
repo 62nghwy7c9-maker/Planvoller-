@@ -4054,6 +4054,7 @@ void main() {
   var fired=false, raf=0, embedded=(window.top!==window.self);
   function frac(){var m=document.documentElement.scrollHeight-window.innerHeight;return m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;}
   function go(){
+    try{sessionStorage.setItem("pvIntro","1");}catch(e){}
     if(embedded){ try{parent.postMessage({planvollerIntro:"done"},"*");}catch(e){} }
     else if(NEXT_URL){ window.location.assign(NEXT_URL); }
   }
