@@ -200,9 +200,20 @@
     window.addEventListener("message", function (e) {
       if (e && e.data && e.data.planvollerIntro === "done") finishIntro();
     });
-    intro.querySelector(".intro__skip").addEventListener("click", finishIntro);
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") finishIntro(); });
     introFrame.addEventListener("error", finishIntro);
+    /* Wächter: läuft das Intro nicht nachweislich (gerenderter Canvas), automatisch überspringen */
+    setTimeout(function () {
+      if (introDone) return;
+      var alive = false;
+      try {
+        var d = introFrame.contentDocument;
+        var c = d && d.querySelector("canvas");
+        var r = d && d.getElementById("root");
+        alive = !!(c && c.width > 0 && r && r.childElementCount > 0);
+      } catch (err) { alive = false; }
+      if (!alive) finishIntro();
+    }, 2500);
   } else if (intro) {
     intro.remove();
   }

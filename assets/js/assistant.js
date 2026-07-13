@@ -1,7 +1,7 @@
 /* Planvoller — Digitaler Assistent
    Beantwortet häufige Bauherren-Fragen sofort im Browser (keine Datenübertragung).
-   Optional: echtes KI-Backend anbinden über
-   <script defer src="assets/js/assistant.js" data-ai-endpoint="https://…"></script>
+   Optional: echtes KI-Backend anbinden, indem am Script-Tag das Attribut
+   data-ai-endpoint="https://…" gesetzt wird
    (POST {question:"…"} → {answer:"…"}); ohne Endpoint antwortet die lokale Wissensbasis. */
 (function () {
   "use strict";

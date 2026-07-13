@@ -121,11 +121,6 @@ html.show-intro .intro, .intro.is-leaving { display: block; }
 html.show-intro body { overflow: hidden; }
 .intro.is-leaving { opacity: 0; pointer-events: none; }
 .intro iframe { width: 100%; height: 100%; border: 0; display: block; }
-.intro__skip { position: absolute; right: 1.1rem; top: 1.1rem; z-index: 2;
-  background: rgba(250, 249, 245, .85); backdrop-filter: blur(4px);
-  border: 1px solid var(--hair); color: var(--grey); font: inherit; font-size: .82rem;
-  font-weight: 550; padding: .55em 1em; cursor: pointer; transition: color .18s, border-color .18s; }
-.intro__skip:hover { color: var(--ink); border-color: var(--ink); }
 
 /* ---------- Hero (Startseite): Vollbild-Hintergrundvideo ---------- */
 .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end;
