@@ -155,6 +155,23 @@
     });
   });
 
+  /* ---------- Loop-Videos: nur sichtbar abspielen, Reduced-Motion respektieren ---------- */
+  var loopVideos = document.querySelectorAll(".film video[autoplay]");
+  if (loopVideos.length) {
+    if (reduceMotion) {
+      loopVideos.forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); });
+    } else if ("IntersectionObserver" in window) {
+      var vio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var v = entry.target;
+          if (entry.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+          else v.pause();
+        });
+      }, { threshold: .2 });
+      loopVideos.forEach(function (v) { vio.observe(v); });
+    }
+  }
+
   /* ---------- Jahreszahl im Footer ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = String(new Date().getFullYear());
