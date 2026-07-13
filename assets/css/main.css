@@ -396,6 +396,14 @@ body.has-hero .site-head.is-scrolled .menu-toggle span { background: var(--ink);
 .post time { color: var(--faint); font-size: .85rem; }
 @media (max-width: 640px) { .post { grid-template-columns: 1fr; gap: .3rem; } }
 
+.post h2 a:hover { color: var(--accent); }
+.post-meta { color: var(--faint); font-size: .9rem; margin-top: -0.4rem; }
+.prose--article { padding-bottom: clamp(2rem, 5vw, 3.5rem); }
+.prose ul { margin: 0 0 1.1em; padding-left: 1.15em; color: var(--grey); }
+.prose ul li { margin-bottom: .45em; }
+.prose ul li::marker { color: var(--accent); }
+.prose strong { color: var(--ink); }
+
 /* ---------- Kontakt ---------- */
 .contact-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
   gap: clamp(2rem, 4vw, 4rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
@@ -442,6 +450,7 @@ body.has-hero .site-head.is-scrolled .menu-toggle span { background: var(--ink);
 .assist.is-open .assist__btn-open { display: none; }
 .assist.is-open .assist__btn-close { display: inline; }
 .assist.is-open .assist__btn { padding: .55em .95em; }
+.assist__panel[hidden] { display: none; }
 .assist__panel { position: absolute; right: 0; bottom: calc(100% + .7rem);
   width: min(400px, calc(100vw - 2rem)); background: var(--paper);
   border: 1px solid var(--hair); box-shadow: 0 24px 60px -24px rgba(22, 20, 18, .35);

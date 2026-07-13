@@ -42,7 +42,8 @@
   /* Intro nur einmal pro Sitzung, nie bei reduzierter Bewegung */
   (function () {
     try {
-      if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+      if (matchMedia("(hover: hover) and (pointer: fine)").matches &&
+          !matchMedia("(prefers-reduced-motion: reduce)").matches &&
           !sessionStorage.getItem("pvIntro")) {
         document.documentElement.classList.add("show-intro");
       }
