@@ -175,6 +175,22 @@
     }
   }
 
+  /* ---------- Ankunft vom Standalone-Intro: Orange schmilzt ins Haus ---------- */
+  if (document.documentElement.classList.contains("from-intro")) {
+    var fadeHero = document.querySelector(".hero__bg video");
+    if (fadeHero) {
+      fadeHero.pause();
+      try { fadeHero.currentTime = 0; } catch (e) {}
+      setTimeout(function () {
+        var pr = fadeHero.play();
+        if (pr && pr.catch) pr.catch(function () {});
+      }, 250);
+    }
+    setTimeout(function () {
+      document.documentElement.classList.remove("from-intro");
+    }, 1800);
+  }
+
   /* ---------- Intro-Overlay (Startseite) ---------- */
   var intro = document.getElementById("pv-intro");
   if (intro && document.documentElement.classList.contains("show-intro")) {
