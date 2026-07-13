@@ -166,12 +166,45 @@
           var v = entry.target;
           var once = !v.hasAttribute("loop");
           if (once && v.ended) return;           /* auf letztem Bild stehen bleiben */
+          if (document.documentElement.classList.contains("show-intro")) { v.pause(); return; }
           if (entry.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
           else v.pause();
         });
       }, { threshold: .2 });
       loopVideos.forEach(function (v) { vio.observe(v); });
     }
+  }
+
+  /* ---------- Intro-Overlay (Startseite) ---------- */
+  var intro = document.getElementById("pv-intro");
+  if (intro && document.documentElement.classList.contains("show-intro")) {
+    var introFrame = intro.querySelector("iframe");
+    introFrame.src = introFrame.getAttribute("data-src");
+    var heroVid = document.querySelector(".hero__bg video");
+    if (heroVid) heroVid.pause();
+    var introDone = false;
+    var finishIntro = function () {
+      if (introDone) return;
+      introDone = true;
+      try { sessionStorage.setItem("pvIntro", "1"); } catch (e) {}
+      intro.classList.add("is-leaving");                 /* weicher Crossfade */
+      document.documentElement.classList.remove("show-intro");
+      window.scrollTo(0, 0);
+      if (heroVid) {
+        try { heroVid.currentTime = 0; } catch (e) {}
+        var pr = heroVid.play();
+        if (pr && pr.catch) pr.catch(function () {});
+      }
+      setTimeout(function () { intro.remove(); }, 1100);
+    };
+    window.addEventListener("message", function (e) {
+      if (e && e.data && e.data.planvollerIntro === "done") finishIntro();
+    });
+    intro.querySelector(".intro__skip").addEventListener("click", finishIntro);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") finishIntro(); });
+    introFrame.addEventListener("error", finishIntro);
+  } else if (intro) {
+    intro.remove();
   }
 
   /* ---------- Kompetenz-Tabs ---------- */

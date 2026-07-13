@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /intro.html
 
 Sitemap: https://www.planvoller.de/sitemap.xml

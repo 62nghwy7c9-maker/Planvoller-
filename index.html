@@ -38,6 +38,17 @@
     ]
   }
   </script>
+  <script>
+  /* Intro nur einmal pro Sitzung, nie bei reduzierter Bewegung */
+  (function () {
+    try {
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+          !sessionStorage.getItem("pvIntro")) {
+        document.documentElement.classList.add("show-intro");
+      }
+    } catch (e) {}
+  })();
+  </script>
 </head>
 <body class="has-hero">
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -68,6 +79,11 @@
       <a href="kontakt.html">Kontakt</a>
     </nav>
     <p class="menu-meta">Würselen · Kerpen · Bensberg<br><a href="mailto:info@planvoller.de">info@planvoller.de</a></p>
+  </div>
+
+  <div class="intro" id="pv-intro" aria-label="Intro-Animation">
+    <iframe data-src="intro.html" title="Planvoller Intro — Stein auf Stein"></iframe>
+    <button type="button" class="intro__skip">Intro überspringen</button>
   </div>
 
   <main id="main">
