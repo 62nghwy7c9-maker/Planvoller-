@@ -3,8 +3,9 @@
 Unternehmenswebsite der Planvoller GmbH (Einfamilienhausbau · Würselen, Kerpen,
 Bensberg). Statisch, ohne Build-Schritt, ohne externe Abhängigkeiten.
 
-**Design (v3):** hell, klassisch, freundlich. Markenfarben aus dem Logo
-(Terrakotta `#a84400`, Graugrün `#808374`), Schrift Work Sans (self-hosted).
+**Design (v4 „Studio"):** monochrom und editorial — warmes Weiß, Tinte, Hairlines,
+scharfe Kanten; die Fotos tragen die Farbe, das Logo-Orange `#a84400` bleibt der
+einzige Akzent. Eine Schriftfamilie: Instrument Sans (variabel, self-hosted).
 Dezente Scroll-Reveals statt schwerer Animationen — kein GSAP, kein WebGL.
 
 ## Struktur
