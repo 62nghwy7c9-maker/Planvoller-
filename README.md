@@ -30,6 +30,24 @@ Zum Einbauen in eine bestehende Seite: den `<style>`-Block, das `<div class="com
 
 Der iframe bringt seinen eigenen Scrollbereich mit – die Animation läuft unabhängig vom Rest der Seite.
 
+## Übergang zur Hauptseite
+
+Wenn die Animation zu Ende gescrollt ist, blendet das Intro weich aus und geht auf die Hauptseite über:
+
+- **Als eigene Seite:** es wird auf die Adresse in der Konstante `NEXT_URL` weitergeleitet. Diese steht ganz oben im letzten `<script>`-Block von `intro.html` (Standard: `index.html`) – dort einfach die Adresse deiner echten Startseite eintragen.
+- **Im iframe:** statt weiterzuleiten schickt das Intro der Elternseite eine Nachricht. Darauf kann die Website reagieren (z. B. den iframe ausblenden und den Inhalt zeigen):
+
+```html
+<script>
+  window.addEventListener("message", function (e) {
+    if (e.data && e.data.planvollerIntro === "done") {
+      // z. B. den Intro-iframe ausblenden und zur Seite übergehen
+      document.querySelector("iframe[title='Planvoller Intro']").style.display = "none";
+    }
+  });
+</script>
+```
+
 ## Texte / Marke anpassen
 
 Die eingeblendeten Texte („Stein auf Stein.", „Bauen mit Herz und Verstand", „Willkommen bei planvoller.") und das Logo oben links stehen als Klartext in der Datei und lassen sich per Suchen-und-Ersetzen ändern.
