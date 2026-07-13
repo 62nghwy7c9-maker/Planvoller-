@@ -324,6 +324,22 @@ body.has-hero .site-head.is-scrolled .menu-toggle span { background: var(--ink);
 .value p { margin: 0; color: var(--grey); font-size: .98rem; }
 @media (max-width: 800px) { .values { grid-template-columns: 1fr; } }
 
+/* ---------- Team ---------- */
+.team-groups { display: grid; gap: clamp(2.5rem, 5vw, 4rem); }
+.team-group { display: block; }
+.team-cat { font-size: .8rem; font-weight: 550; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--faint); margin: 0 0 1.2rem; padding-bottom: .7rem; border-bottom: 1px solid var(--hair); }
+.team { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.4rem, 3vw, 2rem) clamp(1rem, 2vw, 1.5rem); }
+.member { display: block; }
+.member__photo { overflow: hidden; background: var(--wash); }
+.member__photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;
+  transition: transform .6s cubic-bezier(.2, .6, .2, 1); }
+.member:hover .member__photo img { transform: scale(1.04); }
+.member b { display: block; font-size: 1.05rem; font-weight: 550; letter-spacing: -.01em; margin-top: .8rem; }
+.member span { display: block; color: var(--grey); font-size: .9rem; margin-top: .1em; }
+@media (max-width: 1050px) { .team { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px) { .team { grid-template-columns: repeat(2, 1fr); } }
+
 /* ---------- Referenz-Detail ---------- */
 .case-hero { margin: 0 0 clamp(2rem, 4vw, 3.5rem); }
 .case-hero img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
