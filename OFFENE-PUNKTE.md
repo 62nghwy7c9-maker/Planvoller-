@@ -135,3 +135,22 @@ den Menüpunkt vorerst ausblenden?
 | **Ratgeber-PDF: Lead-Erfassung** | Newsletter-/Formulardienst (z. B. Brevo, Mailchimp), dann Download gegen E-Mail-Adresse | PDF ist frei herunterladbar (ohne Anmeldung) |
 | **Google Business Profile** je Standort anlegen/pflegen und mit den neuen Standortseiten verlinken | Zugang zum Google-Konto | Standortseiten verlinken auf Google-Maps-Suche |
 | **Formular-Endpoint** (unverändert offen) | Server-Endpoint oder Formulardienst; dann `data-endpoint` am Formular setzen | Absenden öffnet einen E-Mail-Entwurf |
+
+---
+
+## 7. Sichtbare Platzhalter auf der Website (Juli 2026)
+
+Überall dort, wo noch keine echten Angaben vorliegen, steht jetzt ein **sichtbar
+gekennzeichneter Platzhalter** (orange gestrichelt, „PLATZHALTER"-Markierung) mit
+einer Beschreibung, was dort hin gehört. Vor dem finalen Livegang füllen oder entfernen:
+
+- **Kundenstimmen** (Startseite, Referenzen-Übersicht): 3 Slots je Seite — echte,
+  schriftlich freigegebene Bauherren-Zitate + Name/Ort einsetzen.
+- **Referenz-Detailseiten** (5×): Hinweis „Projektangaben bestätigen" (Name, Baujahr,
+  Projektdaten, Beschreibungstexte sind vorläufig) + Platzhalter fürs Bauherren-Zitat.
+- **Referenzen-Übersicht**: Hinweis, dass Bilder Visualisierungen sind und Projekte
+  bestätigt/durch echte Fotos ersetzt werden sollten.
+- **Blog „Was kostet ein Massivhaus?"**: Preisspannen als Marktschätzung markiert —
+  durch eigene Zahlen ersetzen oder bestätigen (gilt auch für FAQ, Assistent, Ratgeber-PDF).
+- **Impressum**: Platzhalter zur Aufsichtsbehörde (§ 34c GewO) + Erinnerung an
+  anwaltliche Prüfung der Rechtstexte.

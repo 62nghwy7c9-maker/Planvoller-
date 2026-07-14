@@ -615,3 +615,24 @@ body.has-hero .site-head.is-scrolled .site-tel { color: var(--ink); }
 .contact-card__text { margin: .6rem 0 0; font-size: .9rem; color: var(--grey); line-height: 1.55; }
 .contact-card__text a { text-decoration: underline; text-underline-offset: 3px; }
 .contact-card__text a:hover { color: var(--accent); }
+
+/* ================================================================
+   Sichtbare Platzhalter — markieren Inhalte, die durch echte Angaben
+   von Planvoller ersetzt werden muessen (v4.2)
+   ================================================================ */
+.placeholder { border: 1.5px dashed rgba(168, 68, 0, .55); background: rgba(168, 68, 0, .045);
+  padding: 1rem 1.15rem 1.1rem; }
+.ph__tag { display: inline-flex; align-items: center; gap: .4em; font-size: .68rem;
+  letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: #fff;
+  background: var(--accent); padding: .3em .65em; margin-bottom: .7rem; }
+.ph__tag::before { content: "✎"; font-size: .9em; }
+.ph__desc { margin: 0; color: var(--ink); font-size: .92rem; line-height: 1.55; }
+.ph__desc strong { font-weight: 600; }
+.ph__example { margin: .55rem 0 0; color: var(--grey); font-size: .82rem; line-height: 1.5;
+  font-style: italic; }
+.quotes .placeholder { border-top: 1.5px dashed rgba(168, 68, 0, .55); }
+.case-quote-ph { margin-top: 2rem; }
+.prose .placeholder { margin: 1.5rem 0; }
+@media print { .placeholder { border-color: #999; background: none; } .ph__tag { background: #999; } }
+.section-note { max-width: 42rem; margin: .6rem 0 0; color: var(--grey); font-size: .92rem;
+  line-height: 1.55; }
