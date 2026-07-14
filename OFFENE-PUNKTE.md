@@ -123,3 +123,15 @@ den Menüpunkt vorerst ausblenden?
   geprüft; alle 13 Seiten im Browser getestet (Desktop + Mobil): 0 Fehler.
 - `sitemap.xml` vollständig (13 Seiten), Share-Links URL-kodiert,
   `noscript`-Fallback im Formular.
+
+---
+
+## 6. Neu offen seit Conversion-Ausbau (Juli 2026)
+
+| Punkt | Was gebraucht wird | Bis dahin |
+| --- | --- | --- |
+| **Kundenstimmen sind Platzhalter** (Startseite, Referenzen-Übersicht, Bauherren-Zitate auf den 5 Referenzseiten) | Echte, schriftlich freigegebene Zitate der Bauherren | Texte sind plausibel formuliert, aber im Quelltext als `PLATZHALTER` markiert — vor Livegang zwingend ersetzen oder entfernen |
+| **Preisspannen bestätigen** (Blog „Was kostet ein Massivhaus?", FAQ, Ratgeber-PDF: 2.400–3.400 €/m², 15–20 % Nebenkosten) | Freigabe/Korrektur der Spannen durch Planvoller | Als „marktübliche Orientierung, kein Angebot" gekennzeichnet |
+| **Ratgeber-PDF: Lead-Erfassung** | Newsletter-/Formulardienst (z. B. Brevo, Mailchimp), dann Download gegen E-Mail-Adresse | PDF ist frei herunterladbar (ohne Anmeldung) |
+| **Google Business Profile** je Standort anlegen/pflegen und mit den neuen Standortseiten verlinken | Zugang zum Google-Konto | Standortseiten verlinken auf Google-Maps-Suche |
+| **Formular-Endpoint** (unverändert offen) | Server-Endpoint oder Formulardienst; dann `data-endpoint` am Formular setzen | Absenden öffnet einen E-Mail-Entwurf |

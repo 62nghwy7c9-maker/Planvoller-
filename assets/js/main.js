@@ -120,7 +120,10 @@
       });
       if (!valid) {
         var first = form.querySelector(".field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea");
-        if (first) first.focus();
+        if (first) {
+          try { form.dispatchEvent(new CustomEvent("pv:invalid", { detail: first })); } catch (err) {}
+          first.focus();
+        }
         return;
       }
       var endpoint = form.getAttribute("data-endpoint");
@@ -152,6 +155,52 @@
         var field = input.closest(".field");
         if (field) field.classList.remove("is-invalid");
       });
+    });
+  });
+
+  /* ---------- Mehrstufiges Formular (3 kurze Schritte statt einer langen Seite) ---------- */
+  document.querySelectorAll("[data-steps]").forEach(function (wrap) {
+    var steps = Array.prototype.slice.call(wrap.querySelectorAll(".form-step"));
+    var dots = Array.prototype.slice.call(wrap.querySelectorAll(".form-progress li"));
+    if (steps.length < 2) return;
+    var cur = 0;
+    var show = function (i, focusFirst) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      steps.forEach(function (s, j) { s.classList.toggle("is-current", j === cur); });
+      dots.forEach(function (d, j) {
+        d.classList.toggle("is-current", j === cur);
+        d.classList.toggle("is-done", j < cur);
+      });
+      if (focusFirst) {
+        var f = steps[cur].querySelector("input, select, textarea");
+        if (f) f.focus();
+      }
+    };
+    var validStep = function () {
+      var ok = true, first = null;
+      steps[cur].querySelectorAll("[required]").forEach(function (input) {
+        var good = input.type === "checkbox" ? input.checked : input.checkValidity();
+        var field = input.closest(".field");
+        if (field) field.classList.toggle("is-invalid", !good);
+        if (!good) { ok = false; if (!first) first = input; }
+      });
+      if (first) first.focus();
+      return ok;
+    };
+    wrap.addEventListener("click", function (e) {
+      if (e.target.closest("[data-step-next]")) { if (validStep()) show(cur + 1, true); }
+      else if (e.target.closest("[data-step-back]")) show(cur - 1);
+    });
+    wrap.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && cur < steps.length - 1 && !e.target.matches("textarea, button")) {
+        e.preventDefault();
+        if (validStep()) show(cur + 1, true);
+      }
+    });
+    var form = wrap.closest("form");
+    if (form) form.addEventListener("pv:invalid", function (e) {
+      var idx = steps.indexOf(e.detail && e.detail.closest(".form-step"));
+      if (idx > -1 && idx !== cur) show(idx);
     });
   });
 

@@ -12,8 +12,12 @@
   var KB = [
     { k: "ablauf schritte schritt prozess meilenstein meilensteine bauablauf phasen läuft",
       a: 'Wir bauen in <strong>15 klar definierten Schritten</strong> — vom Bauantrag (Schritt 01) über Richtfest (08) bis zur Schlüsselübergabe (15). Jeder Schritt ist ein Meilenstein mit klarem Ergebnis. Alle Details: <a href="ablauf.html">Der Ablauf</a>.' },
-    { k: "preis preise kosten kostet festpreis teuer budget garantie euro preislich",
-      a: 'Die Fertigstellung Ihres Hauses <strong>zum vereinbarten Termin und Preis</strong> — das garantieren wir. Dazu wird vor Vertragsschluss ein individueller Ablaufplan verbindlich festgelegt. Für eine konkrete Einschätzung Ihres Vorhabens: <a href="kontakt.html">Bauanfrage stellen</a>.' },
+    { k: "preis preise kosten kostet festpreis teuer budget garantie euro preislich quadratmeter",
+      a: 'Als Marktorientierung: Schlüsselfertige Massivhäuser liegen derzeit meist bei <strong>2.400–3.400 € pro m² Wohnfläche</strong>, plus 15–20 % Baunebenkosten. Was Ihr Haus konkret kostet, legen wir vor Vertragsschluss als <strong>Festpreis verbindlich</strong> fest. Mehr dazu: <a href="blog-kosten.html">Was kostet ein Massivhaus?</a> — oder direkt ein <a href="kontakt.html">kostenloses Erstgespräch</a>.' },
+    { k: "faq fragen frage antworten häufige",
+      a: 'Die häufigsten Fragen — von Ablauf über Kosten bis Bemusterung — beantworten wir gesammelt auf unserer <a href="faq.html">FAQ-Seite</a>. Und natürlich hier: Fragen Sie einfach!' },
+    { k: "ratgeber pdf download checkliste herunterladen",
+      a: 'Unser kostenloser <a href="ratgeber-planvoller.pdf" download>Ratgeber (PDF)</a> erklärt alle 15 Schritte ins Eigenheim — mit Checklisten für Grundstückskauf und Festpreis-Vergleich. Ohne Anmeldung.' },
     { k: "termin termine bauzeit dauer dauert lange fertigstellung fertig wann termintreue",
       a: 'Verlässlichkeit und Termintreue sind bei uns Programm: Der Ablaufplan wird zum Vertragsschluss <strong>verbindlich</strong> festgelegt — das erspart Ihnen kostspielige Terminverschiebungen. Mehr dazu unter <a href="planvoller.html">Warum Planvoller</a>.' },
     { k: "standort standorte adresse telefon nummer anrufen erreichen büro würselen kerpen bensberg finde finden",
@@ -36,7 +40,7 @@
       a: 'Der erste Schritt ist ein Gespräch: Stellen Sie Ihre <a href="kontakt.html">Bauanfrage</a> — wir melden uns innerhalb von zwei Werktagen mit einer ehrlichen Einschätzung.' }
   ];
   var FALLBACK = 'Das kann ich nicht sicher beantworten — aber unser Team kann es: Schreiben Sie an <a href="mailto:info@planvoller.de">info@planvoller.de</a> oder stellen Sie direkt eine <a href="kontakt.html">Bauanfrage</a>. Wir melden uns innerhalb von zwei Werktagen.';
-  var CHIPS = ["Wie läuft der Bau ab?", "Was ist mit dem Preis?", "Wo finde ich Sie?", "Zeigt mir Referenzen"];
+  var CHIPS = ["Wie läuft der Bau ab?", "Was kostet ein Haus?", "Wo finde ich Sie?", "Zeigt mir Referenzen"];
 
   var STOP = " was wie ist sind ein eine einen bei euch ihre ihr sie der die das und mit für auch habt hat kann können mir ich wir uns den dem nach zum zur auf im es an um gibt denn noch mal von aus oder man ";
   function localAnswer(q) {

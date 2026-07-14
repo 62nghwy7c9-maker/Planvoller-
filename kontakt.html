@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kontakt & Bauanfrage | Planvoller GmbH</title>
-  <meta name="description" content="Bauanfrage an die Planvoller GmbH: Erzählen Sie uns von Ihrem Grundstück und Ihren Plänen. Standorte in Würselen, Kerpen und Bensberg.">
+  <title>Kostenloses Erstgespräch & Bauanfrage | Planvoller GmbH</title>
+  <meta name="description" content="Kostenloses, unverbindliches Erstgespräch mit der Planvoller GmbH: Erzählen Sie uns in drei kurzen Schritten von Ihren Plänen. Standorte in Würselen, Kerpen und Bensberg.">
   <link rel="canonical" href="https://www.planvoller.de/kontakt.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Kontakt & Bauanfrage | Planvoller GmbH">
-  <meta property="og:description" content="Bauanfrage an die Planvoller GmbH: Erzählen Sie uns von Ihrem Grundstück und Ihren Plänen. Standorte in Würselen, Kerpen und Bensberg.">
+  <meta property="og:title" content="Kostenloses Erstgespräch & Bauanfrage | Planvoller GmbH">
+  <meta property="og:description" content="Kostenloses, unverbindliches Erstgespräch mit der Planvoller GmbH: Erzählen Sie uns in drei kurzen Schritten von Ihren Plänen. Standorte in Würselen, Kerpen und Bensberg.">
   <meta property="og:image" content="https://www.planvoller.de/assets/img/og-image.jpg">
   <meta property="og:locale" content="de_DE">
   <meta name="theme-color" content="#fcfbf9">
@@ -72,7 +72,9 @@
         <a href="ablauf.html">Ablauf</a>
         <a href="referenzen.html">Referenzen</a>
         <a href="blog.html">Blog</a>
-        <a class="btn" href="kontakt.html" aria-current="page"><span>Bauanfrage</span></a>
+        <a href="faq.html">FAQ</a>
+        <a class="site-tel num-mono" href="tel:+4924056079832">+49 2405 6079832</a>
+        <a class="btn btn--accent" href="kontakt.html" aria-current="page"><span>Erstgespräch</span></a>
       </nav>
       <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen">
         <span></span><span></span>
@@ -87,9 +89,12 @@
       <a href="ablauf.html">Ablauf</a>
       <a href="referenzen.html">Referenzen</a>
       <a href="blog.html">Blog</a>
+      <a href="faq.html">FAQ</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
-    <p class="menu-meta">Würselen · Kerpen · Bensberg<br><a href="mailto:info@planvoller.de">info@planvoller.de</a></p>
+    <p class="menu-meta">Würselen · Kerpen · Bensberg<br>
+      <a class="num-mono" href="tel:+4924056079832">+49 2405 6079832</a><br>
+      <a href="mailto:info@planvoller.de">info@planvoller.de</a></p>
   </div>
 
   <main id="main">
@@ -102,96 +107,132 @@
           </ol>
         </nav>
         <h1>Schritt 01: das Gespräch.</h1>
-        <p class="lead">Erzählen Sie uns von Ihrem Grundstück, Ihren Plänen, Ihrem
-          Zeithorizont. Wir melden uns innerhalb von zwei Werktagen — mit einer ehrlichen
-          Einschätzung, nicht mit einem Verkaufsskript.</p>
+        <p class="lead">Kostenlos und unverbindlich: Erzählen Sie uns in drei kurzen Schritten
+          von Ihrem Grundstück, Ihren Plänen, Ihrem Zeithorizont. Wir melden uns innerhalb von
+          zwei Werktagen — mit einer ehrlichen Einschätzung, nicht mit einem Verkaufsskript.</p>
       </header>
 
       <div class="contact-grid">
-        <form class="form" data-form novalidate aria-label="Bauanfrage">
+        <form class="form" data-form novalidate aria-label="Kostenloses Erstgespräch anfragen">
           <!-- TODO Backend: data-endpoint="…" setzen, sobald der Formular-Endpoint des Hosters
                feststeht. Ohne Endpoint öffnet der Absenden-Button einen E-Mail-Entwurf. -->
-          <div class="form__fields">
-            <div class="form-grid-2">
-              <div class="field">
-                <label for="f-name">Name *</label>
-                <input id="f-name" name="name" type="text" autocomplete="name" required>
-                <span class="field__error" role="alert">Bitte geben Sie Ihren Namen an.</span>
+          <div class="form__fields" data-steps>
+            <ol class="form-progress" aria-hidden="true">
+              <li class="is-current">Vorhaben</li>
+              <li>Ihr Haus</li>
+              <li>Kontakt</li>
+            </ol>
+            <fieldset class="form-step is-current">
+              <legend class="visually-hidden">Schritt 1 von 3: Ihr Vorhaben</legend>
+              <div class="form-grid-2">
+                <div class="field">
+                  <label for="f-anliegen">Ihr Anliegen *</label>
+                  <select id="f-anliegen" name="anliegen" required>
+                    <option value="">Bitte wählen</option>
+                    <option value="erstgespraech">Kostenloses Erstgespräch</option>
+                    <option value="bauanfrage">Bauanfrage</option>
+                    <option value="grundstueck">Grundstücksangebot</option>
+                    <option value="allgemein">Allgemeine Anfrage</option>
+                    <option value="sonstiges">Sonstiges</option>
+                  </select>
+                  <span class="field__error" role="alert">Bitte wählen Sie Ihr Anliegen.</span>
+                </div>
+                <div class="field">
+                  <label for="f-grundstueck">Grundstück vorhanden?</label>
+                  <select id="f-grundstueck" name="grundstueck">
+                    <option value="">Bitte wählen</option>
+                    <option value="ja">Ja, Grundstück vorhanden</option>
+                    <option value="in-aussicht">In Aussicht / Kauf geplant</option>
+                    <option value="nein">Nein, noch auf der Suche</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-zeit">Zeithorizont</label>
+                  <select id="f-zeit" name="zeithorizont">
+                    <option value="">Bitte wählen</option>
+                    <option value="12">Baustart innerhalb 12 Monate</option>
+                    <option value="24">In 1–2 Jahren</option>
+                    <option value="offen">Noch offen</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-ort">Wunsch-Standort</label>
+                  <select id="f-ort" name="standort">
+                    <option value="">Bitte wählen</option>
+                    <option value="wuerselen">Würselen</option>
+                    <option value="kerpen">Kerpen</option>
+                    <option value="bensberg">Bensberg</option>
+                    <option value="unklar">Noch offen</option>
+                  </select>
+                </div>
               </div>
-              <div class="field">
-                <label for="f-email">E-Mail *</label>
-                <input id="f-email" name="email" type="email" autocomplete="email" required>
-                <span class="field__error" role="alert">Bitte geben Sie eine gültige E-Mail-Adresse an.</span>
+              <div class="form-nav">
+                <span></span>
+                <button class="btn btn--accent" type="button" data-step-next>
+                  <span>Weiter</span><span class="btn__arrow" aria-hidden="true">→</span>
+                </button>
               </div>
+            </fieldset>
+            <fieldset class="form-step">
+              <legend class="visually-hidden">Schritt 2 von 3: Ihr Haus</legend>
               <div class="field">
-                <label for="f-tel">Telefon</label>
-                <input id="f-tel" name="tel" type="tel" autocomplete="tel">
+                <label for="f-msg">Ihr Vorhaben *</label>
+                <textarea id="f-msg" name="nachricht" required
+                  placeholder="Grundstück, Wohnfläche, Wünsche — alles, was Ihnen wichtig ist."></textarea>
+                <span class="field__error" role="alert">Bitte beschreiben Sie kurz Ihr Vorhaben.</span>
               </div>
               <div class="field">
                 <label for="f-wohnort">Ihr Wohnort</label>
                 <input id="f-wohnort" name="wohnort" type="text" autocomplete="address-level2">
               </div>
-              <div class="field">
-                <label for="f-anliegen">Ihr Anliegen *</label>
-                <select id="f-anliegen" name="anliegen" required>
-                  <option value="">Bitte wählen</option>
-                  <option value="bauanfrage">Bauanfrage</option>
-                  <option value="grundstueck">Grundstücksangebot</option>
-                  <option value="allgemein">Allgemeine Anfrage</option>
-                  <option value="sonstiges">Sonstiges</option>
-                </select>
-                <span class="field__error" role="alert">Bitte wählen Sie Ihr Anliegen.</span>
+              <div class="form-nav">
+                <button class="btn btn--ghost" type="button" data-step-back>
+                  <span>Zurück</span>
+                </button>
+                <button class="btn btn--accent" type="button" data-step-next>
+                  <span>Weiter</span><span class="btn__arrow" aria-hidden="true">→</span>
+                </button>
               </div>
-              <div class="field">
-                <label for="f-ort">Wunsch-Standort</label>
-                <select id="f-ort" name="standort">
-                  <option value="">Bitte wählen</option>
-                  <option value="wuerselen">Würselen</option>
-                  <option value="kerpen">Kerpen</option>
-                  <option value="bensberg">Bensberg</option>
-                  <option value="unklar">Noch offen</option>
-                </select>
+            </fieldset>
+            <fieldset class="form-step">
+              <legend class="visually-hidden">Schritt 3 von 3: Ihre Kontaktdaten</legend>
+              <div class="form-grid-2">
+                <div class="field">
+                  <label for="f-name">Name *</label>
+                  <input id="f-name" name="name" type="text" autocomplete="name" required>
+                  <span class="field__error" role="alert">Bitte geben Sie Ihren Namen an.</span>
+                </div>
+                <div class="field">
+                  <label for="f-email">E-Mail *</label>
+                  <input id="f-email" name="email" type="email" autocomplete="email" required>
+                  <span class="field__error" role="alert">Bitte geben Sie eine gültige E-Mail-Adresse an.</span>
+                </div>
+                <div class="field">
+                  <label for="f-tel">Telefon</label>
+                  <input id="f-tel" name="tel" type="tel" autocomplete="tel">
+                </div>
               </div>
-              <div class="field">
-                <label for="f-grundstueck">Grundstück vorhanden?</label>
-                <select id="f-grundstueck" name="grundstueck">
-                  <option value="">Bitte wählen</option>
-                  <option value="ja">Ja, Grundstück vorhanden</option>
-                  <option value="in-aussicht">In Aussicht / Kauf geplant</option>
-                  <option value="nein">Nein, noch auf der Suche</option>
-                </select>
+              <div class="field field--row">
+                <input id="f-consent" name="consent" type="checkbox" required>
+                <label for="f-consent">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a>
+                  gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage
+                  einverstanden. *</label>
+                <span class="field__error" role="alert">Bitte bestätigen Sie die Datenschutzerklärung.</span>
               </div>
-              <div class="field">
-                <label for="f-zeit">Zeithorizont</label>
-                <select id="f-zeit" name="zeithorizont">
-                  <option value="">Bitte wählen</option>
-                  <option value="12">Baustart innerhalb 12 Monate</option>
-                  <option value="24">In 1–2 Jahren</option>
-                  <option value="offen">Noch offen</option>
-                </select>
+              <p class="form__note">* Pflichtfelder. Ihre Daten werden ausschließlich zur Bearbeitung
+                Ihrer Anfrage verwendet.</p>
+              <div class="form-nav">
+                <button class="btn btn--ghost" type="button" data-step-back>
+                  <span>Zurück</span>
+                </button>
+                <button class="btn btn--accent" type="submit">
+                  <span>Anfrage senden</span><span class="btn__arrow" aria-hidden="true">→</span>
+                </button>
               </div>
-            </div>
-            <div class="field">
-              <label for="f-msg">Ihr Vorhaben *</label>
-              <textarea id="f-msg" name="nachricht" required
-                placeholder="Grundstück, Wohnfläche, Wünsche — alles, was Ihnen wichtig ist."></textarea>
-              <span class="field__error" role="alert">Bitte beschreiben Sie kurz Ihr Vorhaben.</span>
-            </div>
-            <div class="field field--row">
-              <input id="f-consent" name="consent" type="checkbox" required>
-              <label for="f-consent">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a>
-                gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage
-                einverstanden. *</label>
-              <span class="field__error" role="alert">Bitte bestätigen Sie die Datenschutzerklärung.</span>
-            </div>
-            <p class="form__note">* Pflichtfelder. Ihre Daten werden ausschließlich zur Bearbeitung
-              Ihrer Anfrage verwendet.</p>
-            <button class="btn" type="submit">
-              <span>Bauanfrage senden</span><span class="btn__arrow" aria-hidden="true">→</span>
-            </button>
-            <p class="form__error" role="alert" hidden>Das hat leider nicht geklappt. Bitte versuchen
-              Sie es erneut oder schreiben Sie uns direkt an
-              <a href="mailto:info@planvoller.de">info@planvoller.de</a>.</p>
+              <p class="form__error" role="alert" hidden>Das hat leider nicht geklappt. Bitte versuchen
+                Sie es erneut oder schreiben Sie uns direkt an
+                <a href="mailto:info@planvoller.de">info@planvoller.de</a>.</p>
+            </fieldset>
           </div>
           <noscript>
             <p class="form__note">Dieses Formular benötigt JavaScript. Alternativ erreichen Sie uns
@@ -223,6 +264,12 @@
             <h3>Direkt</h3>
             <address><a href="mailto:info@planvoller.de">info@planvoller.de</a></address>
           </div>
+          <div class="contact-card" data-reveal data-reveal-delay="3">
+            <h3>Vorab lesen?</h3>
+            <p class="contact-card__text">Antworten auf die häufigsten Fragen finden Sie in den
+              <a href="faq.html">FAQ</a> — oder im kostenlosen
+              <a href="ratgeber-planvoller.pdf" download>Ratgeber (PDF)</a>.</p>
+          </div>
         </aside>
       </div>
     </div>
@@ -239,9 +286,9 @@
         <div>
           <h4>Standorte</h4>
           <ul role="list">
-            <li><a href="kontakt.html#wuerselen">Würselen</a></li>
-            <li><a href="kontakt.html#kerpen">Kerpen</a></li>
-            <li><a href="kontakt.html#bensberg">Bensberg</a></li>
+            <li><a href="standort-wuerselen.html">Würselen</a></li>
+            <li><a href="standort-kerpen.html">Kerpen</a></li>
+            <li><a href="standort-bensberg.html">Bensberg</a></li>
           </ul>
         </div>
         <div>
@@ -252,6 +299,8 @@
             <li><a href="ablauf.html">Ablauf</a></li>
             <li><a href="referenzen.html">Referenzen</a></li>
             <li><a href="blog.html">Blog</a></li>
+            <li><a href="faq.html">Häufige Fragen</a></li>
+            <li><a href="ratgeber-planvoller.pdf" download>Ratgeber (PDF)</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
         </div>
@@ -269,6 +318,11 @@
       </div>
     </div>
   </footer>
+
+  <div class="stickybar" role="navigation" aria-label="Schnellkontakt">
+    <a href="tel:+4924056079832">Anrufen</a>
+    <a class="stickybar__cta" href="kontakt.html">Kostenloses Erstgespräch</a>
+  </div>
 
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/assistant.js"></script>
