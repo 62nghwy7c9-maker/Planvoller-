@@ -4061,10 +4061,10 @@ void main() {
   function update(){
     raf=0;
     var p=frac();
-    var q=Math.min(1,Math.max(0,(p-.94)/.06)); /* letzte 6% weich ausblenden */
+    var q=Math.min(1,Math.max(0,(p-.88)/.12)); /* letzte 6% weich ausblenden */
     cover.style.opacity=String(q);
     cover.style.visibility=q<=.001?"hidden":"visible";
-    if(p>=.999 && !fired){ fired=true; cover.style.opacity="1"; cover.style.visibility="visible"; setTimeout(go,300); }
+    if(p>=.999 && !fired){ fired=true; cover.style.opacity="1"; cover.style.visibility="visible"; setTimeout(go,650); }
   }
   function onScroll(){ raf||(raf=requestAnimationFrame(update)); }
   update();

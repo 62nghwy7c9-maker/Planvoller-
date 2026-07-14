@@ -38,6 +38,23 @@
     ]
   }
   </script>
+  <style>
+  /* Ankunft vom Intro: erste Farbe ist Orange (kein weisser Lade-Blitz),
+     Farbreise Orange -> Gelb -> Fensterlicht startet erst, wenn die Seite steht */
+  html.from-intro { background: #a84400; }
+  html.from-intro body::after { content: ""; position: fixed; inset: 0; z-index: 200;
+    background: #a84400; pointer-events: none; }
+  html.from-intro.ramp-go body::after {
+    animation: pvHandoffIn 1.8s cubic-bezier(.45, 0, .25, 1) .1s forwards; }
+  @keyframes pvHandoffIn {
+    0%   { background: #a84400; opacity: 1; }
+    38%  { background: #d98a1c; opacity: 1; }
+    62%  { background: #f6c14e; opacity: .92; }
+    82%  { background: #ffdf96; opacity: .55; }
+    100% { background: #ffedc4; opacity: 0; visibility: hidden; }
+  }
+  @media (prefers-reduced-motion: reduce) { html.from-intro body::after { display: none; } }
+  </style>
   <script>
   /* Intro einmal pro Sitzung, nie bei reduzierter Bewegung.
      Desktop: als Overlay mit Crossfade. Touch: als eigene Seite (natives Scrollen). */
@@ -46,6 +63,13 @@
       if (sessionStorage.getItem("pvHandoff")) {
         sessionStorage.removeItem("pvHandoff");
         document.documentElement.classList.add("from-intro");
+        var startRamp = function () {
+          requestAnimationFrame(function () {
+            document.documentElement.classList.add("ramp-go");
+          });
+        };
+        if (document.readyState !== "loading") startRamp();
+        else document.addEventListener("DOMContentLoaded", startRamp);
       }
     } catch (e) {}
     try {
